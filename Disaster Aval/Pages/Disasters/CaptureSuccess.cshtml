@@ -1,0 +1,63 @@
+﻿@page
+@model Disaster_Aval.Pages.Load_Donations.ActiveDisastersModel
+
+@{
+ }
+<style>
+    /* Custom styling for the color scheme */
+    body {
+        background-color: purple;
+        color: white;
+    }
+
+    h4 {
+        color: orange;
+    }
+
+    dt {
+        color: orange;
+    }
+
+    a {
+        color: orange;
+    }
+
+    /* Style for "Start Donating" button */
+    .btn-start-donating {
+        background-color: orange;
+        color: white;
+    }
+</style>
+
+<div class="text-center">
+    <h4>Disaster Captured </h4>
+    <div class="text-center">
+    <h3>@Model.DisasterDiscription</h3>
+    <p>Did you Know: Donations are not limited to money and goods. Volunteers play a significant role in disaster response and recovery. Many people donate their time and skills to help with cleanup, rebuilding, and support services.</p>
+</div>
+
+    @*add a message for the admins*@
+    <p></p
+
+
+</div>
+
+<div class="row text-center">
+    <div class="col-sm-6 offset-sm-3">
+
+    </div>
+</div>
+
+
+
+@*change to ASP>net*@
+
+
+
+<div class="text-center">
+    @*<a asp-page="/Donation/DonationHome" class="btn btn-primary">Login</a>*@
+    <a asp-page="/Disasters/ActiveDisasters" class="btn btn-start-donating">Capture New Disaster</a>
+    <a asp-page="/Disasters/DonationsList" class="btn btn-start-donating">View Donations</a>
+</div>
+
+

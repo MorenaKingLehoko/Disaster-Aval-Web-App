@@ -1,0 +1,73 @@
+﻿@page
+@model Disaster_Aval.Pages.Donation.DonationHomeModel
+@{
+}
+
+@{
+    ViewData["Title"] = "Natural Disasters";
+}
+
+<style>
+    /* Custom styling for the color scheme */
+    body {
+        background-color: purple;
+        color: white;
+    }
+
+    h1 {
+        color: orange;
+    }
+
+    h2 {
+        color: orange;
+    }
+
+    a {
+        color: orange;
+    }
+
+    .list-group-item {
+        color: black;
+    }
+
+    .btn-custom {
+        background-color: orange;
+        color: white;
+        border-color: orange;
+    }
+</style>
+
+<div class="text-center">
+    <h1 class="display-4">Active Disasters:</h1>
+</div>
+
+<ul class="list-group">
+    @foreach (var disaster in Model.Disasters)
+    {
+        <li class="list-group-item">
+            <strong>Disaster ID:</strong> @disaster.DisasterID
+            <br />
+            <strong>Disaster Name:</strong> @disaster.Name
+            <br />
+            <strong>Aids Required:</strong> @disaster.AidsNeeded
+        </li>
+    }
+</ul>
+
+
+
+
+<div class="row text-center mt-3">
+    <div class="col-md-12">
+
+        <a asp-page ="/Donation/GoodsDonations"  class="btn btn-custom">Goods Donations</a>
+
+        <a asp-page="/Donation/MoneyDonations"  class="btn btn-custom">Monetary Donations</a>
+
+        <a asp-page="/Donation/ClothesDonation"  class="btn btn-custom">Donate Clothes</a>
+
+        <a asp-page="/Donation/FoodDonations"  class="btn btn-custom">Donate Non-perishable foods</a>
+
+        <a asp-action="Index" class="btn btn-secondary">Back</a>
+    </div>
+</div>

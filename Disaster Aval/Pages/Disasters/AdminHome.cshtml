@@ -1,0 +1,61 @@
+﻿@page
+@model Disaster_Aval.Pages.Login.AdminLoginModel
+@{
+ }
+<style>
+    /* Custom styling for the color scheme */
+    body {
+        background-color: purple;
+        color: white;
+    }
+
+    h4 {
+        color: orange;
+    }
+
+    dt {
+        color: orange;
+    }
+
+    a {
+        color: orange;
+    }
+
+    /* Style for "Start Donating" button */
+    .btn-start-donating {
+        background-color: orange;
+        color: white;
+    }
+</style>
+
+<div class="text-center">
+    <h4>Welcome Admin: @Model.AdminId</h4>
+
+    @*add a message for the admins*@
+    <p></p
+
+
+</div>
+
+<div class="row text-center">
+    <div class="col-sm-6 offset-sm-3">
+
+    </div>
+</div>
+
+
+
+@*change to ASP>net*@
+
+
+
+<div class="text-center">
+    @*<a asp-page="/Donation/DonationHome" class="btn btn-primary">Login</a>*@
+    <a asp-page="/Disasters/ActiveDisasters" class="btn btn-start-donating">Capture New Disaster</a>
+    <a asp-page="/Disasters/DonationsList" class="btn btn-start-donating">Monetary Donations</a>
+    <a asp-page="/Disasters/Goods" class="btn btn-start-donating">Goods Donations</a>
+    <a asp-page="/Disasters/SeeDisasters" class="btn btn-start-donating">Disasters</a>
+
+
+</div>
+

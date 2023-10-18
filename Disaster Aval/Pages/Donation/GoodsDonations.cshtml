@@ -1,0 +1,79 @@
+﻿@page
+@model Disaster_Aval.Pages.Donation.GoodsDonationsModel
+@{
+}
+<style>
+    /* Custom styling for the color scheme */
+    body {
+        background-color: purple;
+        color: white;
+    }
+
+    h4 {
+        color: orange;
+    }
+
+    dt {
+        color: orange;
+    }
+
+    a {
+        color: orange;
+    }
+
+    .form-group label {
+        color: orange;
+    }
+
+    .btn-custom {
+        background-color: orange;
+        color: white;
+        border-color: orange;
+    }
+</style>
+
+<h4>Make a Donation</h4>
+<p>Your contribution can make a difference in times of crisis.</p>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="SubmitDonation" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            
+            <div class="form-group">
+                <label asp-for="NumberOfItems" class="control-label"></label>
+                <input asp-for="NumberOfItems" class="form-control" />
+                <span asp-validation-for="NumberOfItems" class="text-danger"></span>
+            </div>
+           
+            <div class="form-group">
+                <label asp-for="Desription" class="control-label"></label>
+                <input asp-for="Desription" class="form-control" />
+                <span asp-validation-for="Desription" class="text-danger"></span>
+                </div>
+
+            <div class="form-group">
+                <label asp-for="Category" class="control-label"></label>
+                <input asp-for="Category" class="form-control" />
+                <span asp-validation-for="Category" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <label asp-for="DisasterID" class="control-label"></label>
+                <input asp-for="DisasterID" class="form-control" />
+                <span asp-validation-for="DisasterID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserID" class="control-label"></label>
+                <input asp-for="UserID" class="form-control" />
+                <span asp-validation-for="UserID" class="text-danger"></span>
+            </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-custom">Submit Donation</button>
+                    <a asp-action="Index" class="btn btn-secondary">Back</a>
+                </div>
+        </form>
+    </div>
+</div>

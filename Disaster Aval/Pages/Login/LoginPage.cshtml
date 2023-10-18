@@ -1,0 +1,76 @@
+﻿@page
+@model Disaster_Aval.Pages.Login.LoginPageModel
+@{
+    ViewData["Title"] = "User Registration";
+}
+
+<style>
+    /* Custom styling for the color scheme */
+    body {
+        background-color: purple;
+        color: white;
+    }
+
+    h4 {
+        color: orange;
+    }
+
+    .form-group label {
+        color: orange;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="email"] {
+        background-color: purple;
+        color: white;
+        border: 1px solid orange;
+    }
+
+    .btn-primary {
+        background-color: orange;
+        border-color: orange;
+    }
+
+    a {
+        color: orange;
+    }
+
+    hr {
+        background-color: orange;
+    }
+</style>
+
+<h4>Login using your credentails</h4>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-page-handler="OnPost" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            
+
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Surname" class="control-label"></label>
+                <input asp-for="Surname" class="form-control" />
+                <span asp-validation-for="Surname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Login" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+

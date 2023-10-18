@@ -1,0 +1,53 @@
+﻿@page
+@model Disaster_Aval.Pages.Login.LoginViewModel
+@{
+}
+<style>
+    /* Custom styling for the color scheme */
+    body {
+        background-color: purple;
+        color: white;
+    }
+
+    h4 {
+        color: orange;
+    }
+
+    dt {
+        color: orange;
+    }
+
+    a {
+        color: orange;
+    }
+
+    /* Style for "Start Donating" button */
+    .btn-start-donating {
+        background-color: orange;
+        color: white;
+    }
+</style>
+
+<div class="text-center">
+    <h4>Registration Failed</h4>
+    <p>Please Try again.</p>
+</div>
+
+<div class="row text-center">
+    <div class="col-sm-6 offset-sm-3">
+
+    </div>
+</div>
+
+
+
+
+
+@*change to asp*@
+<div class="text-center">
+    @Html.ActionLink("Try Again", "Donation", new { /* id = Model.PrimaryKey */ }, new { @class = "btn btn-start-donating" })
+    <a asp-action="Index" class="btn btn-secondary">Home</a>
+</div>
+<!-- Add this within your "LoginFailed" Razor Page -->
+
+

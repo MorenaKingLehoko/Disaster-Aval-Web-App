@@ -1,0 +1,80 @@
+﻿@page
+@model Disaster_Aval.Pages.Load_Donations.ActiveDisastersModel
+@{
+}
+
+<style>
+    /* Custom styling for the color scheme */
+    body {
+        background-color: purple;
+        color: white;
+    }
+
+    h4 {
+        color: orange;
+    }
+
+    .form-group label {
+        color: orange;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="email"] {
+        background-color: purple;
+        color: white;
+        border: 1px solid orange;
+    }
+
+    .btn-primary {
+        background-color: orange;
+        border-color: orange;
+    }
+
+    a {
+        color: orange;
+    }
+
+    hr {
+        background-color: orange;
+    }
+</style>
+
+<h4>Capture New Disaster</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="ProcessLogin" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="DisasterDiscription" class="control-label"></label>
+                <input asp-for="DisasterDiscription" class="form-control" />
+                <span asp-validation-for="DisasterDiscription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StartDate" class="control-label"></label>
+                <input asp-for="StartDate" class="form-control" />
+                <span asp-validation-for="StartDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EndDate" class="control-label"></label>
+                <input asp-for="EndDate" class="form-control" />
+                <span asp-validation-for="EndDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Location" class="control-label"></label>
+                <input asp-for="Location" class="form-control" />
+                <span asp-validation-for="Location" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AidRequired" class="control-label"></label>
+                <input asp-for="AidRequired" class="form-control" />
+                <span asp-validation-for="AidRequired" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Capture Disaster" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+

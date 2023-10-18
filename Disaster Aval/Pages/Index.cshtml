@@ -1,0 +1,49 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<style>
+    /* Custom styling for the color scheme */
+    body {
+        background-color: purple;
+        color: white;
+    }
+
+    h1 {
+        color: orange;
+    }
+
+    a {
+        color: orange;
+    }
+
+    /* Style for custom button */
+    .btn-custom {
+        background-color: orange;
+        color: white;
+        border-color: orange;
+    }
+</style>
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to the Disaster Alleviation Foundation</h1>
+    <p>A space created just for you, the compassionate individuals who make a difference in times of crisis. As a dedicated non-profit organization, we're here to extend a hand of hope and practical aid when it's needed most. Your contributions, whether in the form of essential goods, generous donations, or anonymous support, drive our mission forward. We understand the importance of transparency and accountability, which is why our web application offers you insights into our ongoing efforts.</p>
+    <p>Step into our platform to find exclusive areas tailored for you, where you can manage and edit data to maximize your impact. Join our community of like-minded individuals, where your generosity finds purpose and our commitment to transparency guides every step we take. Welcome to a space where technology and compassion unite to create real change.</p>
+</div>
+
+
+
+<div class="row text-center mt-3">
+    <div class="col-md-12">
+
+        <a asp-page="/Login/LoginPage" class="btn btn-custom">Login</a>
+
+        <a asp-page="/Login/LoginView" class="btn btn-custom">Sign up</a>
+
+        <a asp-page="/Login/AdminLogin" class="btn btn-custom">As Admin</a>
+
+      
+    </div>
+</div>

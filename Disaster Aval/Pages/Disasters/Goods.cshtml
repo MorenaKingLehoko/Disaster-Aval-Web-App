@@ -1,0 +1,67 @@
+﻿@page
+@model Disaster_Aval.Pages.Disasters.GoodsModel
+@{
+    ViewData["Title"] = "Donations List";
+}
+
+<style>
+    /* Custom styling for the color scheme */
+    body {
+        background-color: purple;
+        color: white;
+    }
+
+    h2 {
+        color: orange;
+    }
+
+    th {
+        color: orange;
+    }
+
+    a {
+        color: orange;
+    }
+
+    /* Style for "Back to Active Disasters" button */
+    .btn-back {
+        background-color: orange;
+        color: white;
+    }
+</style>
+
+<h2>@ViewData["Title"]</h2>
+
+@if (Model.Donations != null && Model.Donations.Count > 0)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Donation ID</th>
+                <th>Donator</th>
+                <th>Disaster Donated to</th>
+               
+                <th>Donation Type </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var donation in Model.Donations)
+            {
+                <tr>
+                    <td>@donation.DonationID</td>
+                    <td>@donation.UserID</td>
+                    <td>@donation.DisasterID</td>
+                   
+                    <td>@donation.DonationItemID</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No Donations yet</p>
+}
+
+<a asp-page="/Disasters/ActiveDisasters" class="btn btn-back">Capture New Disaster</a>
+

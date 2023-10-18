@@ -1,0 +1,52 @@
+﻿@page
+@model Disaster_Aval.Pages.Login.LoginViewModel
+@{
+
+}
+<style>
+    /* Custom styling for the color scheme */
+    body {
+        background-color: purple;
+        color: white;
+    }
+
+    h4 {
+        color: orange;
+    }
+
+    dt {
+        color: orange;
+    }
+
+    a {
+        color: orange;
+    }
+
+    /* Style for "Start Donating" button */
+    .btn-start-donating {
+        background-color: orange;
+        color: white;
+    }
+</style>
+
+<div class="text-center">
+    <h4>Did you know:</h4>
+    <p> Donations are not only vital for immediate relief but also for long-term recovery efforts. Rebuilding infrastructure, providing medical care, and restoring communities often require sustained funding and support.</p>
+</div>
+
+<div class="row text-center">
+    <div class="col-sm-6 offset-sm-3">
+
+    </div>
+</div>
+
+
+
+@*change to ASP>net*@
+
+
+<div class="text-center">
+    @*<a asp-page="/Donation/DonationHome" class="btn btn-primary">Login</a>*@
+    <a asp-page="/Donation/DonationHome"  class="btn btn-start-donating">Start Donating</a>
+    <a asp-page="/Shared/Index" class="btn btn-secondary">Home</a>
+</div>

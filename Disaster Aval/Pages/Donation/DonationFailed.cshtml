@@ -1,0 +1,38 @@
+﻿@page
+@model Disaster_Aval.Pages.Donation.DonationFailedModel
+
+<style>
+    /* Custom styling for the color scheme */
+    body {
+        background-color: purple;
+        color: white;
+    }
+
+    h4 {
+        color: orange;
+    }
+
+    dt {
+        color: orange;
+    }
+
+    a {
+        color: orange;
+    }
+
+    /* Style for "Try Again" button */
+    .btn-try-again {
+        background-color: orange;
+        color: white;
+    }
+</style>
+
+<div class="text-center">
+    <h4>Donation Failed</h4>
+    <p>Please try Again</p>
+</div>
+
+<div class="text-center">
+    <a asp-page="/Donation/DonationHome" class="btn btn-start-donating">Try Again</a>
+    <a asp-page="/Shared/Index" class="btn btn-back-to-home">Back to Home</a>
+</div>

@@ -1,0 +1,67 @@
+﻿@page
+@model Disaster_Aval.Pages.Disasters.SeeDisastersModel
+@{
+    ViewData["Title"] = "See Disasters";
+}
+
+<style>
+    /* Custom styling for the color scheme */
+    body {
+        background-color: purple;
+        color: white;
+    }
+
+    h2 {
+        color: orange;
+    }
+
+    th {
+        color: orange;
+    }
+
+    a {
+        color: orange;
+    }
+
+    /* Style for "Back to Active Disasters" button */
+    .btn-back {
+        background-color: orange;
+        color: white;
+    }
+</style>
+
+<h2>@ViewData["Title"]</h2>
+
+@if (Model.Disasters != null && Model.Disasters.Count > 0)
+{
+    <table class="table">
+        <thead>
+            <tr>
+
+                <th>Disaster Name</th>
+                 <th>Location</th>
+                <th>StartDate</th>
+                <th>EndDate</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var disaster in Model.Disasters)
+            {
+                <tr>
+                    
+                    <td>@disaster.Name</td>
+                    <td>@disaster.Location</td>
+                    <td>@disaster.Startdate</td>
+
+                    <td>@disaster.EndDate</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No Disasters found</p>
+}
+
+<a asp-page="/Disasters/ActiveDisasters" class="btn btn-back">Back to Active Disasters</a>

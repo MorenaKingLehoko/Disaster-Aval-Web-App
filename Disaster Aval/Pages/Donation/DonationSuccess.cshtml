@@ -1,0 +1,38 @@
+﻿@page
+@model Disaster_Aval.Pages.Donation.DonationSuccessModel
+
+<style>
+    /* Custom styling for the color scheme */
+    body {
+        background-color: purple;
+        color: white;
+    }
+
+    h4 {
+        color: orange;
+    }
+
+    dt {
+        color: orange;
+    }
+
+    a {
+        color: orange;
+    }
+
+    /* Style for "Back to Home" button */
+    .btn-back-to-home {
+        background-color: orange;
+        color: white;
+    }
+</style>
+
+<div class="text-center">
+    <h4>Donation Successful</h4>
+    <p> After a natural disaster, such as a hurricane, earthquake, or flood, there is a significant outpouring of donations in the form of money, goods, and volunteer support. These donations are crucial for providing immediate relief to affected communities.SO THANK YOU</p>
+</div>
+
+<div class="text-center">
+    <a asp-page="/Donation/DonationHome" class="btn btn-start-donating">Start Donating Again</a>
+    <a asp-page="/Shared/Index" class="btn btn-back-to-home">Back to Home</a>
+</div>
