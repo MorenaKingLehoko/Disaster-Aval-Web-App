@@ -22,7 +22,7 @@ namespace Disaster_Aval.Pages.Donation
         [DisplayName("How Much Are you donating R:")]
         [Required]
         public int Amount { get; set; }
-        [DisplayName("Confirm Amount")]
+        [DisplayName("Confirm Amount R:")]
         [Required]
         public int Confirm { get; set; }
 
