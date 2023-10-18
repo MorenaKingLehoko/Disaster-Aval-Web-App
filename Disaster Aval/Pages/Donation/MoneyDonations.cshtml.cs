@@ -19,7 +19,7 @@ namespace Disaster_Aval.Pages.Donation
         [DisplayName("Which Disaster Are you donating to?(Specify by ID)")]
         [Required]
         public int DisasterID { get; set; }
-        [DisplayName("How Much Are you donating")]
+        [DisplayName("How Much Are you donating R:")]
         [Required]
         public int Amount { get; set; }
         [DisplayName("Confirm Amount")]
