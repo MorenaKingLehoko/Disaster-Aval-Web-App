@@ -27,7 +27,7 @@ namespace Disaster_Aval.Pages.Login
         [Required]
         public string Surname { get; set; }
 
-        [DisplayName("Password")]
+        [DisplayName("Strong Password")]
         [Required]
         public string Password { get; set; }
         [DisplayName("Email")]
