@@ -16,7 +16,7 @@ namespace Disaster_Aval.Pages.Donation
         [DisplayName("UserID To Remain Anonymous")]
         [Required]
         public int UserID { get; set; }
-        [DisplayName("Which Disaster Are you donating to?(Specify by ID)")]
+        [DisplayName("Allocate Money to an Actie Disatser (Specify by ID)")]
         [Required]
         public int DisasterID { get; set; }
         [DisplayName("How Much Are you donating R:")]
