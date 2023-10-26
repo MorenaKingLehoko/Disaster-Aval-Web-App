@@ -12,8 +12,8 @@ namespace Disaster_Aval.Pages.Disasters
         [DisplayName("How Much Are you gonna spend on the Purchase?:")]
         public string? amountSpent { get; set; }
         [DisplayName("Which Disaster Account are you Spending from?:")]
-       
-        public string? DonationID { get; set; }
+        public string? DisasterName { get; set; }
+        
         public class Disaster
         {
             public int Id { get; set; }
