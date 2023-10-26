@@ -37,7 +37,7 @@ namespace Disaster_Aval.Pages.Disasters
             decimal newTotalDonationAmount = totalDonationAmount - amountSpent;
 
             // Update the database with the new totalDonationAmount for the specified disaster
-            UpdateTotalDonationAmountForDisaster(disasterName, newTotalDonationAmount);
+            GetNewTotalDonationAmountForDisaster(disasterName);
 
             // Redirect to a success page or perform other actions
             return RedirectToPage("AddItem");
@@ -70,25 +70,31 @@ namespace Disaster_Aval.Pages.Disasters
 
 
 
-        private void UpdateTotalDonationAmountForDisaster(string disasterName, decimal newTotalDonationAmount)
+        private decimal GetNewTotalDonationAmountForDisaster(string disasterName)
         {
             string connectionString = "Server=tcp:djpromo123.database.windows.net,1433;Initial Catalog=DjPromoDatabase;Persist Security Info=False;User ID=Admin1;Password=Storedghast!68;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
 
-            // Define your SQL query to update the total donation amount for the specified disaster
-            string sqlUpdateQuery = "UPDATE d\r\nSET d.DonationAmount = @NewTotalDonationAmount\r\nFROM [dbo].[DAF_Donations] d\r\nJOIN [dbo].[DAF_Disasters] dd ON d.DisasterID =" +
-                " dd.DisasterID" +
-                "\r\nWHERE dd.Name = @DisasterName;\r\n";
+            // Define your SQL query to retrieve the NewTotalDonationAmount for the specified disaster
+            string sqlQuery = "SELECT SUM(Don.DonationAmount) AS NewTotalDonationAmount " +
+                             "FROM [dbo].[DAF_Donations] Don " +
+                             "JOIN [dbo].[DAF_Disasters] D ON Don.DisasterID = D.DisasterID " +
+                             "WHERE D.Name = @DisasterName";
 
-            // Execute the query to update the total donation amount
+            // Execute the query to get the NewTotalDonationAmount
             using (SqlConnection connection = new SqlConnection(connectionString))
-            using (SqlCommand command = new SqlCommand(sqlUpdateQuery, connection))
+            using (SqlCommand command = new SqlCommand(sqlQuery, connection))
             {
-                command.Parameters.AddWithValue("@NewTotalDonationAmount", newTotalDonationAmount);
                 command.Parameters.AddWithValue("@DisasterName", disasterName);
                 connection.Open();
-                command.ExecuteNonQuery();
+                var result = command.ExecuteScalar();
+                if (result != DBNull.Value)
+                {
+                    return Convert.ToDecimal(result);
+                }
+                return 0;
             }
         }
+
 
         public void OnGet()
         {
