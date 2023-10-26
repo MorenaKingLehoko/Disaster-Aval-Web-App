@@ -13,6 +13,14 @@ namespace Disaster_Aval.Pages.Disasters
         public string? amountSpent { get; set; }
         [DisplayName("Which Disaster Account are you Spending from?:")]
         public string? DisasterName { get; set; }
+        [DisplayName("Whats THe name of the Item You're Buying?:")]
+        public string? ItemName { get; set; }
+        [DisplayName("Breif Description of the Item:")]
+        public string? ItemDescription { get; set; }
+        [DisplayName("Item Category?:")]
+        public string? ItemCategory { get; set; }
+        [DisplayName("DonationID:")]
+        public string? DonationID { get; set; }
         public class Disaster
         {
             public int Id { get; set; }
