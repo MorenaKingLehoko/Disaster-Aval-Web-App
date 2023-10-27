@@ -28,7 +28,7 @@ namespace Disaster_Aval.Pages.Disasters
             {
                 connection.Open();
 
-                // Define your SQL query to retrieve disaster data
+                // SQL query to retrieve disaster data
                 string sqlQuery = "SELECT\r\n    D.DisasterID,\r\n    D.Name AS DisasterName,\r\n    SUM(Don.DonationAmount) AS TotalDonationAmount\r\nFROM\r\n    [dbo].[DAF_Disasters] D\r\nLEFT JOIN\r\n    [dbo].[DAF_Donations] Don ON D.DisasterID = Don.DisasterID\r\nGROUP BY\r\n    D.DisasterID, D.Name\r\nHAVING\r\n    SUM(Don.DonationAmount) > 0\r\nORDER BY\r\n    D.Name;\r\n";
 
                 using (SqlCommand command = new SqlCommand(sqlQuery, connection))
@@ -39,7 +39,7 @@ namespace Disaster_Aval.Pages.Disasters
 
                         while (reader.Read())
                         {
-                            // Map database columns to Disaster properties
+                            //  database columns to Disaster properties
                             var disaster = new Disaster
                             {
                                 Id = reader.GetInt32(0),
