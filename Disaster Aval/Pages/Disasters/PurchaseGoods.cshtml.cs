@@ -39,7 +39,7 @@ namespace Disaster_Aval.Pages.Disasters
             UpdateTotalDonationAmountForDisaster(disasterName, newTotalDonationAmount);
 
             // Redirect to a success page or perform other actions
-            return RedirectToPage("UpdatePage");
+            return RedirectToPage("AddItem");
         }
 
         private decimal GetDonationAmountForDisaster(string disasterName)
