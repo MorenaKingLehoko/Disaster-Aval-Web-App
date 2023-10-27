@@ -29,7 +29,7 @@ namespace Disaster_Aval.Pages.Disasters
                 connection.Open();
 
                 // Define your SQL query to retrieve disaster data
-                string sqlQuery = "SELECT D.DisasterID, D.Name AS DisasterName, Don.DonationAmount + @amountSpent AS TotalDonationAmount FROM [dbo].[DAF_Disasters] D LEFT JOIN [dbo].[DAF_Donations] Don ON D.DisasterID = Don.DisasterID WHERE Don.DonationAmount > 0 ORDER BY D.Name;";
+                string sqlQuery = "SELECT D.DisasterID, D.Name AS DisasterName, I.ItemName, Don.DonationAmount + @amountSpent AS TotalDonationAmount\r\nFROM [dbo].[DAF_Disasters] D\r\nLEFT JOIN [dbo].[DAF_Donations] Don ON D.DisasterID = Don.DisasterID\r\nLEFT JOIN [dbo].[DAF_Items] I ON Don.DonationID = I.DonationID\r\nWHERE Don.DonationAmount > 0\r\nORDER BY D.Name;\r\n";
 
                 using (SqlCommand command = new SqlCommand(sqlQuery, connection))
                 {
