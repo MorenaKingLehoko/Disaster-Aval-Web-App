@@ -50,8 +50,9 @@
                     <th>DISASTER ID</th>
                     <th>DISASTER NAME</th>
                     <th>AVAILABLE MONEY</th>
+                   @*// <th>ITEM BOUGHT</th>*@
                 </tr>
-@@ -67,24 +68,31 @@
+
                 @foreach (var disaster in Model.Disasters)
                 {
                     <tr>
@@ -59,6 +60,7 @@
 
                         <td>@disaster.Name</td>
                         <td>@disaster.AvailableMoney</td>
+                      @* <td>@disaster.ItemName</td>*@
                     </tr>
                 }
             </tbody>
@@ -81,8 +83,8 @@
             </div>
 
             
-            <a asp-page="/Disasters/PurchaseGoods" class="btn-submit">Purchase</a>
-            <button type="submit" class="btn btn-custom">Purchase Test</button>
+          @*  z point*@
+            <button type="submit" class="btn-submit">Purchase </button>
         </form>
     </div>
 </div>

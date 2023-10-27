@@ -18,6 +18,8 @@ namespace Disaster_Aval.Pages.Disasters
             public int Id { get; set; }
             public string? Name { get; set; }
             public decimal AvailableMoney { get; set; }
+           // public string ItemName { get; set; }
+
 
 
         }
@@ -100,7 +102,7 @@ namespace Disaster_Aval.Pages.Disasters
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-
+                //Z point
                 // Define your SQL query to retrieve disaster data
                 string sqlQuery = "SELECT\r\n    D.DisasterID,\r\n    D.Name AS DisasterName,\r\n    SUM(Don.DonationAmount) AS TotalDonationAmount\r\nFROM\r\n    [dbo].[DAF_Disasters] D\r\nLEFT JOIN\r\n    [dbo].[DAF_Donations] Don ON D.DisasterID = Don.DisasterID\r\nGROUP BY\r\n    D.DisasterID, D.Name\r\nHAVING\r\n    SUM(Don.DonationAmount) > 0\r\nORDER BY\r\n    D.Name;\r\n";
                 //   string sqlQuery = "SELECT\r\n    D.DisasterID,\r\n    D.Name AS DisasterName,\r\n    SUM(Don.DonationAmount) AS TotalDonationAmount\r\nFROM\r\n    [dbo].[DAF_Disasters] D\r\nLEFT JOIN\r\n    [dbo].[DAF_Donations] Don ON D.DisasterID = Don.DisasterID\r\nGROUP BY\r\n    D.DisasterID, D.Name\r\nHAVING\r\n    SUM(Don.DonationAmount) > 0\r\nORDER BY\r\n    D.Name;\r\n";
@@ -117,7 +119,8 @@ namespace Disaster_Aval.Pages.Disasters
                             {
                                 Id = reader.GetInt32(0),
                                 Name = reader.GetString(1),
-                                AvailableMoney = reader.GetDecimal(2)
+                                AvailableMoney = reader.GetDecimal(2),
+                               // ItemName = reader.GetString(3),
                             };
 
                             Disasters.Add(disaster);
