@@ -28,6 +28,8 @@ namespace Disaster_Aval.Pages.Donation
 
         [DisplayName("Brief Description")]
         public string Desription { get; set; }
+        [DisplayName("Allocate Goods to Disatser, (Specify By DisasterID)")]
+        [Required]
         public int DisasterID { get; set; }
         [DisplayName("UserID to remain Anonymous")]
         public int UserID { get; set; }
