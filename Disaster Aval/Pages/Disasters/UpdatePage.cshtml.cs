@@ -20,7 +20,7 @@ namespace Disaster_Aval.Pages.Disasters
 
 
 
-            // Replace this connection string with your database connection string
+           
             string connectionString = "Server=tcp:djpromo123.database.windows.net,1433;Initial Catalog=DjPromoDatabase;Persist Security Info=False;User ID=Admin1;Password=Storedghast!68;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
 
 

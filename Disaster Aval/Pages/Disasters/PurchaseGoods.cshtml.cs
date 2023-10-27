@@ -27,11 +27,11 @@ namespace Disaster_Aval.Pages.Disasters
         public List<Disaster> Disasters { get; set; }
         public IActionResult OnPost()
         {
-            // Get user input for amount spent and disaster name
+            // for user input for amount spent and disaster name
             decimal amountSpent = Convert.ToDecimal(Request.Form["amountSpent"]);
             string disasterName = Request.Form["DisasterName"];
 
-            // Run the SQL query to retrieve SUM(Don.DonationAmount) for the specified disaster
+            //  SQL query to retrieve SUM(Don.DonationAmount) for the specified disaster
             decimal totalDonationAmount = GetDonationAmountForDisaster(disasterName);
 
             // Subtracting the user-entered amount from the totalDonationAmount
