@@ -102,7 +102,7 @@ namespace Disaster_Aval.Pages.Donation
                 conn.Close();
 
                 // Redirecting to the success page or handle success as needed
-                return RedirectToPage("UpdatePage");
+                return RedirectToPage("PurchaseGoods");
             }
         }
         //catch (Exception ex)
