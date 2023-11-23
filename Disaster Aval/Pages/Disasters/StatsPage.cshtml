@@ -2,3 +2,68 @@
 @model Disaster_Aval.Pages.Disasters.StatsPageModel
 @{
 }
+
+<style>
+    /* Custom styling for the color scheme */
+    body {
+        background-color: oldlace;
+        background: linear-gradient(to right, purple, darkpurple);
+        color: purple;
+    }
+
+    h4 {
+        font-family: fantasy;
+        color: orange;
+    }
+
+    dt {
+        color: orange;
+    }
+
+    a {
+        color: orange;
+    }
+
+    .btn-custom {
+        background-color: purple;
+        color: white;
+        border-color: purple;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .btn-custom:hover {
+            background-color: darkorange;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+    .engagement-message {
+        font-size: 18px;
+        font-family: 'Global Sans Serif';
+        margin-top: 20px;
+        color: purple;
+    }
+</style>
+
+<div class="text-center">
+    <h4>Explore The Disaster Alleviation Stats!</h4>
+
+    <div class="engagement-message">
+        
+        Welcome to the Disaster Alleviation Foundation's transparency hub. Here, you can view crucial information about our ongoing efforts:
+        <br>
+        a. Total monetary donations received so far
+        <br>
+        b. Total number of goods received so far
+        <br>
+        c. Currently active disasters, with the money and goods allocated to the disaster.
+        <br>
+        Join us in our commitment to transparency and making a positive impact on those in need!
+    </div>
+    <div class="row text-center mt-3">
+        <div class="col-md-12">
+            <a asp-page="/Login/LoginPage" class="btn btn-custom">Total Monetary Donations</a>
+            <a asp-page="/Login/LoginPage" class="btn btn-custom">Total Goods Received</a>
+            <a asp-page="/Login/LoginPage" class="btn btn-custom">Active Disasters Stats</a>
+        </div>
+    </div>
+</div>
