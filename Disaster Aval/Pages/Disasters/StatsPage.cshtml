@@ -42,6 +42,28 @@
         margin-top: 20px;
         color: purple;
     }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    th, td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid orange;
+    }
+
+    th {
+        background-color: darkpurple;
+        color: purple;
+    }
+
+    tbody tr:hover {
+        background-color: darkpurple;
+        color: purple;
+        transition: background-color 0.3s ease;
+    }
 </style>
 
 <div class="text-center">
@@ -51,11 +73,11 @@
 
         Welcome to the Disaster Alleviation Foundation's transparency hub. Here, you can view crucial information about our ongoing efforts:
         <br>
-        a. Total monetary donations received so far is: @Model.TotalMonetaryDonations.ToString("R 0")
+       <strong> A. Total monetary donations received so far is: @Model.TotalMonetaryDonations.ToString("R 0")</strong>
         <br>
-        b. Total number of goods received so far is: @Model.TotalGoodsReceived
+     <strong> B. Total number of goods received so far is: @Model.TotalGoodsReceived</strong>  
         <br>
-        c. Currently active disasters, with the money and goods allocated to the disaster.
+        <strong>C. Currently active disasters, with the money and goods allocated to the disaster.</strong>
         <br>
         @if (Model.ActiveDisasterStats != null && Model.ActiveDisasterStats.Any())
         {
@@ -92,9 +114,9 @@
 
     <div class="row text-center mt-3">
         <div class="col-md-12">
-            <a asp-page="/Stats/TotalMoney" class="btn btn-custom">Total Monetary Donations</a>
-            <a asp-page="/Stats/TotalGoods" class="btn btn-custom">Total Goods Received</a>
-            <a asp-page="/Stats/ActiveDisasters" class="btn btn-custom">Active Disasters Stats</a>
+        <a asp-page="/Login/LoginPage" class="btn btn-custom"><i class="fas fa-sign-in-alt"></i> Login</a>
+        <a asp-page="/Login/LoginView" class="btn btn-custom"><i class="fas fa-user-plus"></i> Sign up</a>
+            
         </div>
     </div>
-</div>
+
