@@ -18,7 +18,7 @@ namespace Disaster_Aval.Pages.Disasters
             public int Id { get; set; }
             public string? Name { get; set; }
             public decimal AvailableMoney { get; set; }
-           // public string ItemName { get; set; }
+            // public string ItemName { get; set; }
 
 
 
@@ -122,7 +122,7 @@ namespace Disaster_Aval.Pages.Disasters
                                 Id = reader.GetInt32(0),
                                 Name = reader.GetString(1),
                                 AvailableMoney = reader.GetDecimal(2),
-                               // ItemName = reader.GetString(3),
+                                // ItemName = reader.GetString(3),
                             };
 
                             Disasters.Add(disaster);
@@ -131,5 +131,12 @@ namespace Disaster_Aval.Pages.Disasters
                 }
             }
         }
+
+        public object GetDonationAmountForDisaster(string connectionString, string disasterName)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
+
+       
