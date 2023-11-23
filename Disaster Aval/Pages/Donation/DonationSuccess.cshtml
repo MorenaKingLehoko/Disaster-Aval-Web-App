@@ -4,11 +4,13 @@
 <style>
     /* Custom styling for the color scheme */
     body {
-        background-color: purple;
-        color: white;
+        background-color: oldlace;
+        background: linear-gradient(to right, purple, darkpurple);
+        color: purple;
     }
 
     h4 {
+        font-family: fantasy;
         color: orange;
     }
 
@@ -20,19 +22,39 @@
         color: orange;
     }
 
-    /* Style for "Back to Home" button */
-    .btn-back-to-home {
-        background-color: orange;
-        color: white;
+    .form-group label {
+        font-family: fantasy;
+        color: purple;
     }
+
+    {
+        background-color: oldlace;
+        color: black;
+        border: 1px solid purple;
+    }
+
+    .btn-custom {
+        background-color: purple;
+        color: white;
+        border-color: purple;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .btn-custom:hover {
+            background-color: darkorange;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
 </style>
 
 <div class="text-center">
-    <h4>Donation Successful</h4>
-    <p> After a natural disaster, such as a hurricane, earthquake, or flood, there is a significant outpouring of donations in the form of money, goods, and volunteer support. These donations are crucial for providing immediate relief to affected communities.SO THANK YOU</p>
+    <h4>Thank You for Your Generosity!</h4>
+    <p>Congratulations, you've just become a superhero in someone's story! Your donation is a beacon of hope, bringing light to those affected by disaster. 🌟</p>
+    <p>Together, we're making a positive impact on the road to recovery. Your kindness and compassion are changing lives. Thank you for being a part of this journey!</p>
+   
 </div>
 
+
 <div class="text-center">
-    <a asp-page="/Donation/DonationHome" class="btn btn-start-donating">Start Donating Again</a>
-    <a asp-page="/Shared/Index" class="btn btn-back-to-home">Back to Home</a>
+    <a asp-page="/Donation/DonationHome" class="btn btn-custom">Donating Again</a>
+    <a asp-page="/Shared/Index" class="btn btn-custom">Back to Home</a>
 </div>
