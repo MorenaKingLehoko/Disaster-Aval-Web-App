@@ -1,39 +1,73 @@
 ﻿@page
 @model Disaster_Aval.Pages.Donation.DonationHomeModel
 @{
-}
-
-@{
     ViewData["Title"] = "Natural Disasters";
 }
 
 <style>
     /* Custom styling for the color scheme */
     body {
-        background-color: purple;
-        color: white;
+        background-color: oldlace;
+        background: linear-gradient(to right, purple, darkpurple);
+        color: purple;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
     h1 {
-        color: orange;
-    }
-
-    h2 {
+        font-family: fantasy;
         color: orange;
     }
 
     a {
         color: orange;
-    }
-
-    .list-group-item {
-        color: black;
+        transition: color 0.3s ease, text-decoration 0.3s ease;
     }
 
     .btn-custom {
-        background-color: orange;
+        background-color: purple;
         color: white;
-        border-color: orange;
+        border-color: purple;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .btn-custom:hover {
+            background-color: darkorange;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+    .btn i {
+        margin-right: 5px;
+    }
+
+    /* Additional styling for engagement */
+    .engagement-message {
+        font-size: 18px;
+        font-family: fantasy;
+        margin-top: 20px;
+        color: purple;
+    }
+
+    /* Style for disaster items */
+    .disaster-item {
+        background-color: white;
+        border: 1px solid purple;
+        border-radius: 8px;
+        padding: 15px;
+        margin: 10px 0;
+    }
+
+        .disaster-item:hover {
+            background-color: #f5f5f5;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+    .donate-button {
+        margin-top: 10px;
+    }
+
+    /* Style for donation buttons */
+    .donation-buttons {
+        margin-top: 20px;
     }
 </style>
 
@@ -41,33 +75,25 @@
     <h1 class="display-4">Active Disasters:</h1>
 </div>
 
-<ul class="list-group">
-    @foreach (var disaster in Model.Disasters)
-    {
-        <li class="list-group-item">
-            <strong>Disaster ID:</strong> @disaster.DisasterID
-            <br />
-            <strong>Disaster Name:</strong> @disaster.Name
-            <br />
-            <strong>Aids Required:</strong> @disaster.AidsNeeded
-        </li>
-    }
-</ul>
+<!-- Engaging message -->
+<div class="engagement-message"></div>
 
+<!-- Display active disasters -->
+@foreach (var disaster in Model.Disasters)
+{
+    <div class="disaster-item">
+        <h2>@disaster.Name</h2>
+        <p><strong>Disaster ID:</strong> @disaster.DisasterID</p>
+        <p><strong>Aids Required:</strong> @disaster.AidsNeeded</p>
+       @* <button class="btn btn-custom donate-button">Donate Now</button>*@
 
-
-
-<div class="row text-center mt-3">
-    <div class="col-md-12">
-
-        <a asp-page ="/Donation/GoodsDonations"  class="btn btn-custom">Goods Donations</a>
-
-        <a asp-page="/Donation/MoneyDonations"  class="btn btn-custom">Monetary Donations</a>
-
-        <a asp-page="/Donation/ClothesDonation"  class="btn btn-custom">Donate Clothes</a>
-
-        <a asp-page="/Donation/FoodDonations"  class="btn btn-custom">Donate Non-perishable foods</a>
-
-        <a asp-action="Index" class="btn btn-secondary">Back</a>
+        <!-- Donation buttons for each disaster -->
+        <div class="donation-buttons">
+            <a asp-page="/Donation/GoodsDonations" class="btn btn-custom">Goods Donations</a>
+            <a asp-page="/Donation/MoneyDonations" class="btn btn-custom">Monetary Donations</a>
+            <a asp-page="/Donation/ClothesDonation" class="btn btn-custom">Donate Clothes</a>
+            <a asp-page="/Donation/FoodDonations" class="btn btn-custom">Donate Non-perishable foods</a>
+           
+        </div>
     </div>
-</div>
+}
