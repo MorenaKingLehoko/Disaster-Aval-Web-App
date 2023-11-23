@@ -35,13 +35,24 @@ namespace Disaster_Aval.Pages.Donation
         public int UserID { get; set; }
 
 
-       
-
-       
-    
+        [BindProperty(SupportsGet = true)]
+        public int DisasterId { get; set; }
 
 
-    public IActionResult OnPost()
+        
+        public void OnGet()
+        {
+            // You can use the DisasterId property to fetch additional information about the selected disaster
+            // For example, you can query the database to get the disaster name and display it in the <h4> heading.
+            // For simplicity, let's assume you have a service to get the disaster name.
+            ViewData["SelectedDisasterName"] = GetDisasterNameById(DisasterId);
+        }
+
+
+
+
+
+        public IActionResult OnPost()
         {
             GoodsDonationsModel GD = new GoodsDonationsModel();
             DonationHomeModel DH = new DonationHomeModel();
@@ -113,14 +124,37 @@ namespace Disaster_Aval.Pages.Donation
                     return RedirectToPage("DonationSuccess");
                 }
             }
-            //catch (Exception ex)
-            //{
-            //    // Handle exceptions and errors
-            //    return RedirectToPage("LoginFailed", GD);
-            //}
-        }
+        private string GetDisasterNameById(int disasterId)
+        {
+            string connectionString = "Server=tcp:djpromo123.database.windows.net,1433;Initial Catalog=DjPromoDatabase;Persist Security Info=False;User ID=Admin1;Password=Storedghast!68;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
 
+            string query = "SELECT Name FROM DAF_Disasters WHERE DisasterID = @DisasterId";
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@DisasterId", disasterId);
+                    object result = cmd.ExecuteScalar();
+
+                    if (result != null)
+                    {
+                        return result.ToString();
+                    }
+                }
+            }
+
+            // Return a default value or handle the case where the disaster name is not found
+            return "Unknown Disaster";
+        }
     }
+}
+
+
+    
+
 
 
 
