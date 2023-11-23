@@ -8,6 +8,15 @@ namespace Disaster_Aval.Pages.Disasters
     {
         public int TotalGoodsReceived { get; set; }
         public decimal TotalMonetaryDonations { get; set; }
+
+        public class DisasterStats
+        {
+            public string DisasterName { get; set; }
+            public string Location { get; set; }
+            public decimal TotalMoneyDonations { get; set; }
+            public int TotalGoodsDonations { get; set; }
+        }
+        public List<DisasterStats> ActiveDisasterStats { get; set; }
         public void OnGet()
         {
             // Your connection string
@@ -57,6 +66,48 @@ namespace Disaster_Aval.Pages.Disasters
                     }
                 }
             }
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                string query = @"
+                SELECT
+                    d.DisasterID,
+                    d.Name AS DisasterName,
+                    d.Location,
+                    COALESCE(SUM(DonationAmount), 0) AS TotalMoneyDonations,
+                    COALESCE(SUM(CASE WHEN dn.DonationType = 'Goods' THEN 1 ELSE 0 END), 0) AS TotalGoodsDonations
+                FROM
+                    DAF_Disasters d
+                LEFT JOIN
+                    DAF_Donations dn ON d.DisasterID = dn.DisasterID
+                GROUP BY
+                    d.DisasterID, d.Name, d.Location;";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        ActiveDisasterStats = new List<DisasterStats>();
+
+                        while (reader.Read())
+                        {
+                            var stats = new DisasterStats
+                            {
+                                DisasterName = reader["DisasterName"].ToString(),
+                                Location = reader["Location"].ToString(),
+                                TotalMoneyDonations = Convert.ToDecimal(reader["TotalMoneyDonations"]),
+                                TotalGoodsDonations = Convert.ToInt32(reader["TotalGoodsDonations"])
+                            };
+
+                            ActiveDisasterStats.Add(stats);
+                        }
+                    }
+                }
+
+                connection.Close();
+            }
         }
     }
 }
+    

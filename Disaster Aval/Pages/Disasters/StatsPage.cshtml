@@ -48,17 +48,48 @@
     <h4>Explore The Disaster Alleviation Stats!</h4>
 
     <div class="engagement-message">
-        
+
         Welcome to the Disaster Alleviation Foundation's transparency hub. Here, you can view crucial information about our ongoing efforts:
         <br>
-        a. Total monetary donations received so far is : @Model.TotalMonetaryDonations.ToString("R 0")
+        a. Total monetary donations received so far is: @Model.TotalMonetaryDonations.ToString("R 0")
         <br>
-        b. Total number of goods received so far is : @Model.TotalGoodsReceived
+        b. Total number of goods received so far is: @Model.TotalGoodsReceived
         <br>
         c. Currently active disasters, with the money and goods allocated to the disaster.
         <br>
+        @if (Model.ActiveDisasterStats != null && Model.ActiveDisasterStats.Any())
+        {
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Disaster Name</th>
+                        <th>Location</th>
+                        <th>Total Money Donations</th>
+                        <th>Total Goods Donations</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var stats in Model.ActiveDisasterStats)
+                    {
+                        <tr>
+                            <td>@stats.DisasterName</td>
+                            <td>@stats.Location</td>
+                            <td>@stats.TotalMoneyDonations.ToString("R 0")</td>
+                            <td>@stats.TotalGoodsDonations</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <p>No active disasters with allocated funds and goods.</p>
+        }
+
         Join us in our commitment to transparency and making a positive impact on those in need!
     </div>
+</div>
+
     <div class="row text-center mt-3">
         <div class="col-md-12">
             <a asp-page="/Stats/TotalMoney" class="btn btn-custom">Total Monetary Donations</a>
