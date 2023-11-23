@@ -17,6 +17,41 @@ namespace Disaster_Aval.Pages.Disasters
         }
 
         public List<Disaster> Disasters { get; set; }
+        //code to delete from databse
+        public IActionResult OnPostDelete(string disasterId)
+        {
+            if (string.IsNullOrEmpty(disasterId))
+            {
+                // Handle invalid or missing disaster ID
+                // You may want to display a message or redirect to an error page
+                return RedirectToPage("/Disasters/SeeDisasters");
+            }
+
+            // Connect to the database using your connection string
+       
+            string connectionString = "Server=tcp:djpromo123.database.windows.net,1433;Initial Catalog=DjPromoDatabase;Persist Security Info=False;User ID=Admin1;Password=Storedghast!68;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                // Define your SQL query to delete the disaster by ID
+                string deleteQuery = "DELETE FROM DAF_Disasters WHERE DisasterID = @DisasterID";
+
+                using (SqlCommand command = new SqlCommand(deleteQuery, connection))
+                {
+                    // Add parameters to the SQL query
+                    command.Parameters.AddWithValue("@DisasterID", disasterId);
+
+                    // Execute the SQL command
+                    command.ExecuteNonQuery();
+                }
+            }
+
+            // Redirect back to the same page or wherever needed
+            return RedirectToPage("/Disasters/SeeDisasters");
+        }
 
         public void OnGet()
         {

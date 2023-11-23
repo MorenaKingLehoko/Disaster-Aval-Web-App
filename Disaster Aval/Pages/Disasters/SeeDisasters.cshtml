@@ -84,24 +84,32 @@
                 <th>EndDate</th>
             </tr>
         </thead>
+        <!-- Updated table body section -->
         <tbody>
             @foreach (var disaster in Model.Disasters)
             {
                 <tr>
-                    
                     <td>@disaster.Name</td>
                     <td>@disaster.Location</td>
                     <td>@disaster.Startdate</td>
-
                     <td>@disaster.EndDate</td>
+
+                    <!-- delete button for each disaster -->
+                    <td>
+                        <form method="post" asp-page-handler="Delete" asp-route-disasterId="@disaster.DisasterID">
+                            <button type="submit" class="btn btn-back">Delete</button>
+                        </form>
+                    </td>
                 </tr>
             }
         </tbody>
+
     </table>
 }
 else
 {
     <p>No Disasters found</p>
 }
+
 
 <a asp-page="/Disasters/ActiveDisasters" class="btn btn-back">Back to Active Disasters</a>
