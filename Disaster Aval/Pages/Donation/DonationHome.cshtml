@@ -90,9 +90,9 @@
         <!-- Donation buttons for each disaster -->
         <div class="donation-buttons">
             <a asp-page="/Donation/GoodsDonations" asp-route-disasterId="@disaster.DisasterID" class="btn btn-custom">Donate Goods</a>
-            <a asp-page="/Donation/MoneyDonations" class="btn btn-custom">Monetary Donations</a>
-            <a asp-page="/Donation/ClothesDonation" class="btn btn-custom">Donate Clothes</a>
-            <a asp-page="/Donation/FoodDonations" class="btn btn-custom">Donate Non-perishable foods</a>
+            <a asp-page="/Donation/MoneyDonations" asp-route-disasterId="@disaster.DisasterID" class="btn btn-custom">Monetary Donations</a>
+            <a asp-page="/Donation/ClothesDonation" asp-route-disasterId="@disaster.DisasterID" class="btn btn-custom">Donate Clothes</a>
+            <a asp-page="/Donation/FoodDonations" asp-route-disasterId="@disaster.DisasterID" class="btn btn-custom">Donate Non-perishable foods</a>
            
         </div>
     </div>

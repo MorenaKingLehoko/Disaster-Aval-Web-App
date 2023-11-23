@@ -42,9 +42,7 @@ namespace Disaster_Aval.Pages.Donation
         
         public void OnGet()
         {
-            // You can use the DisasterId property to fetch additional information about the selected disaster
-            // For example, you can query the database to get the disaster name and display it in the <h4> heading.
-            // For simplicity, let's assume you have a service to get the disaster name.
+            
             ViewData["SelectedDisasterName"] = GetDisasterNameById(DisasterId);
         }
 
