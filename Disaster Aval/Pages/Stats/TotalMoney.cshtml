@@ -2,3 +2,53 @@
 @model Disaster_Aval.Pages.Stats.TotalMoneyModel
 @{
 }
+
+<style>
+ body {
+        background-color: oldlace;
+        background: linear-gradient(to right, purple, darkpurple);
+        color: purple;
+    }
+
+    h2 {
+        font-family: fantasy;
+        color: orange;
+    }
+
+    dt {
+        color: orange;
+    }
+
+    a {
+        color: orange;
+    }
+
+    .btn-custom {
+        background-color: purple;
+        color: white;
+        border-color: purple;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .btn-custom:hover {
+            background-color: darkorange;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+    .engagement-message {
+        font-size: 18px;
+        font-family: 'Global Sans Serif';
+        margin-top: 20px;
+        color: purple;
+    }
+</style>
+
+<h2>Total Monetary Donations</h2>
+
+<div class="engagement-message">
+    The Disaster Alleviation Foundation values transparency. Here, you can view the total monetary donations received to support our cause.
+</div>
+
+<div>
+    <p>Total Monetary Donations: @Model.TotalMonetaryDonations.ToString("C")</p>
+</div>
