@@ -51,9 +51,11 @@ namespace Disaster_Aval.Pages.Disasters
 
 
             // Defining my SQL query to retrieve the donation amount for the specified disaster
-            string sqlQuery = "SELECT Don.DonationAmount FROM [dbo].[DAF_Disasters] D " +
-                             "LEFT JOIN [dbo].[DAF_Donations] Don ON D.DisasterID = Don.DisasterID " +
-                             "WHERE D.Name = @DisasterName";
+            string sqlQuery = "SELECT Don.DonationAmount " +
+                  "FROM [dbo].[DAF_Disasters] D " +
+                  "LEFT JOIN [dbo].[DAF_Donations] Don ON D.DisasterID = Don.DisasterID " +
+                  "WHERE D.Name = @DisasterName AND Don.DonationAmount IS NOT NULL";
+
 
             // Executing the query to get the specific donation amount
             using (SqlConnection connection = new SqlConnection(connectionString))
