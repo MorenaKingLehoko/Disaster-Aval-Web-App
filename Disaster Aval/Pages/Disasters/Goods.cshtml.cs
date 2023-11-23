@@ -14,7 +14,7 @@ namespace Disaster_Aval.Pages.Disasters
             public decimal? DonationAmount { get; set; }
             public string? DonationItemID { get; set; }
         }
-        public List<Donation> Donations { get; set; } // Use the Donation class from DonationsListModel
+        public List<Donation> Donations { get; set; } 
 
         public void OnGet()
         {
@@ -26,7 +26,12 @@ namespace Disaster_Aval.Pages.Disasters
                 connection.Open();
 
                 // Define your SQL query here to retrieve Goods Donations
-                string sqlQuery = "SELECT d.donationID, u.Name, dd.Name AS DisasterName, i.ItemName AS DonationItem, d.DonationType\r\nFROM DAF_Donations d\r\nINNER JOIN DAF_Users u ON d.UserID = u.UserID\r\nINNER JOIN DAF_Disasters dd ON d.DisasterID = dd.DisasterID\r\nLEFT JOIN DAF_Items i ON d.DonationItemID = i.ItemID\r\nWHERE d.DonationType = 'Goods';";
+                string sqlQuery = "SELECT d.DonationID, u.Name AS Donator, dd.Name AS DisasterName, i.ItemName AS DonationItem " +
+                                     "FROM DAF_Donations d " +
+                                     "INNER JOIN DAF_Users u ON d.UserID = u.UserID " +
+                                 "INNER JOIN DAF_Disasters dd ON d.DisasterID = dd.DisasterID " +
+                                    "LEFT JOIN DAF_Items i ON d.DonationItemID = i.ItemID " +
+                                     "WHERE d.DonationType = 'Goods';";
 
                 using (SqlCommand command = new SqlCommand(sqlQuery, connection))
                 {
@@ -42,8 +47,7 @@ namespace Disaster_Aval.Pages.Disasters
                                 DonationID = reader.IsDBNull(0) ? (int?)null : reader.GetInt32(0),
                                 UserID = reader.IsDBNull(1) ? null : reader.GetString(1),
                                 DisasterID = reader.IsDBNull(2) ? null : reader.GetString(2),
-                                
-                                DonationItemID = reader.IsDBNull(4) ? null : reader.GetString(4)
+                                DonationItemID = reader.IsDBNull(3) ? null : reader.GetString(3)
                             };
 
                             Donations.Add(donation);
