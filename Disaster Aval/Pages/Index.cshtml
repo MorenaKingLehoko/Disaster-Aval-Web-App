@@ -35,6 +35,18 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
+    .btn-special {
+        background-color: darkgoldenrod; /* Orange color */
+        color: #fff; /* White text */
+        border: 1px solid darkgoldenrod; /* Matching border color */
+        margin-top: 10px; /* Adjust as needed */
+    }
+
+        .btn-special:hover {
+            background-color: rebeccapurple; /* Darker shade on hover */
+            border: 1px solid rebeccapurple; /* Matching border color on hover */
+        }
+
     /* Add an icon to buttons */
     .btn i {
         margin-right: 5px;
@@ -43,6 +55,11 @@
 
 <div class="text-center">
     <h1 class="display-4"><strong>Empower People with the Disaster Alleviation Foundation</strong></h1>
+
+
+    <a asp-page="/Login/LoginPage" class="btn btn-special"><i class="fas fa-sign-in-alt"></i> Our Statistics</a>
+
+
     <p> Spark Change, Ignite Hope: Dive into our mission of providing practical aid during disasters! Whether you're an individual, company, organization, or government, your support powers our impact.<strong>Donate goods like clothes and non-perishable foods, or give monetarily—it's your call!</strong> Plus, enjoy the option to stay incognito. Let's turn giving into a joyous journey of impact! 🌟 #EmpowerChange #TechForGood</p>
     <p>Join our community of like-minded individuals, where your generosity finds purpose and our commitment to transparency guides every step we take. Welcome to a space where technology and compassion unite to create real change</p>
 </div>
@@ -53,6 +70,10 @@
     <div class="col-md-12">
         <a asp-page="/Login/LoginPage" class="btn btn-custom"><i class="fas fa-sign-in-alt"></i> Login</a>
         <a asp-page="/Login/LoginView" class="btn btn-custom"><i class="fas fa-user-plus"></i> Sign up</a>
-        <a asp-page="/Login/AdminLogin" class="btn btn-custom"><i class="fas fa-user-shield"></i>Admin Portal</a>
+        <a asp-page="/Login/AdminLogin" class="btn btn-custom"><i class="fas fa-user-shield"></i> Admin Portal</a>
+
+        <!-- Special Button with Description -->
+        
     </div>
 </div>
+
