@@ -35,9 +35,17 @@ namespace Disaster_Aval.Pages.Donation
         public int UserID { get; set; }
 
 
-        public IActionResult OnPost()
+       
+
+       
+    
+
+
+    public IActionResult OnPost()
         {
             GoodsDonationsModel GD = new GoodsDonationsModel();
+            DonationHomeModel DH = new DonationHomeModel();
+           
           //  LoginPageModel LV = new LoginPageModel();
 
             // Getting data from the form
