@@ -58,10 +58,27 @@ namespace Disaster_Aval.Pages.Donation
                 {
                     conn.Open();
 
-                    
-                    //  Inserting a new donation and retrieve the DonationID
-                    string donationInsertQuery = "INSERT INTO DAF_Donations (UserID, DisasterID, DonationType, DonationAmount, DonationItemID) " +
-                        "VALUES (@UserID, @DisasterID, @DonationType, @DonationAmount, @DonationItemID); " +
+                    // 1. Retrieve the current NewTotalDonationAmount
+                    string getCurrentTotalQuery = "SELECT NewTotalDonationAmount FROM DAF_Donations WHERE DisasterID = @DisasterID";
+                    SqlCommand getCurrentTotalCmd = new SqlCommand(getCurrentTotalQuery, conn);
+                    getCurrentTotalCmd.Parameters.AddWithValue("@DisasterID", MD.DisasterID);
+
+                    // Execute the query and retrieve the current total
+                    decimal currentTotal = Convert.ToDecimal(getCurrentTotalCmd.ExecuteScalar());
+
+                    // 2. Add the new donation amount to the current total
+                    decimal newTotal = currentTotal + MD.Amount;
+
+                    // 3. Update the NewTotalDonationAmount in the database
+                    string updateTotalQuery = "UPDATE DAF_Donations SET NewTotalDonationAmount = @NewTotalDonationAmount WHERE DisasterID = @DisasterID";
+                    SqlCommand updateTotalCmd = new SqlCommand(updateTotalQuery, conn);
+                    updateTotalCmd.Parameters.AddWithValue("@NewTotalDonationAmount", newTotal);
+                    updateTotalCmd.Parameters.AddWithValue("@DisasterID", MD.DisasterID);
+                    updateTotalCmd.ExecuteNonQuery();
+
+                    // Inserting a new donation and retrieve the DonationID
+                    string donationInsertQuery = "INSERT INTO DAF_Donations (UserID, DisasterID, DonationType, DonationAmount, DonationItemID, NewTotalDonationAmount) " +
+                        "VALUES (@UserID, @DisasterID, @DonationType, @DonationAmount, @DonationItemID, @NewTotalDonationAmount); " +
                         "SELECT SCOPE_IDENTITY();";
 
                     SqlCommand donationCmd = new SqlCommand(donationInsertQuery, conn);
@@ -70,14 +87,14 @@ namespace Disaster_Aval.Pages.Donation
                     donationCmd.Parameters.AddWithValue("@DonationType", "Monetary");
                     donationCmd.Parameters.AddWithValue("@DonationAmount", MD.Amount);
                     donationCmd.Parameters.AddWithValue("@DonationItemID", DBNull.Value);
+                    donationCmd.Parameters.AddWithValue("@NewTotalDonationAmount", newTotal);
 
                     // Executing the query and retrieve the newly generated DonationID
                     int donationID = Convert.ToInt32(donationCmd.ExecuteScalar());
 
-
-
                     return RedirectToPage("DonationSuccess");
                 }
+
             }
             catch (Exception ex)
             {
