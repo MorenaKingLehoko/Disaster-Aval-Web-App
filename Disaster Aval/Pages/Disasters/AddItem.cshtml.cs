@@ -35,6 +35,7 @@ namespace Disaster_Aval.Pages.Donation
         public int UserID { get; set; }
 
 
+        
         public IActionResult OnPost()
         {
             GoodsDonationsModel1 GD = new GoodsDonationsModel1();
@@ -105,15 +106,9 @@ namespace Disaster_Aval.Pages.Donation
                 return RedirectToPage("PurchaseGoods");
             }
         }
-        //catch (Exception ex)
-        //{
-        //    // Handle exceptions and errors
-        //    return RedirectToPage("LoginFailed", GD);
-        //}
+        
     }
-
 }
-
 
 
 
