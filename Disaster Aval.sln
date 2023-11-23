@@ -5,6 +5,8 @@ VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Disaster Aval", "Disaster Aval\Disaster Aval.csproj", "{87F1F449-577C-46C9-91A2-1297D082B78A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest_DAF", "UnitTest_DAF\UnitTest_DAF.csproj", "{302B07CD-0A94-4FBD-9E29-CF07DECBC53B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{87F1F449-577C-46C9-91A2-1297D082B78A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{87F1F449-577C-46C9-91A2-1297D082B78A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{87F1F449-577C-46C9-91A2-1297D082B78A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{302B07CD-0A94-4FBD-9E29-CF07DECBC53B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{302B07CD-0A94-4FBD-9E29-CF07DECBC53B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{302B07CD-0A94-4FBD-9E29-CF07DECBC53B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{302B07CD-0A94-4FBD-9E29-CF07DECBC53B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
