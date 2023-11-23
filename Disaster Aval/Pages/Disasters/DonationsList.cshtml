@@ -1,17 +1,19 @@
 ﻿@page
 @model Disaster_Aval.Pages.Disasters.DonationsListModel
 @{
-    ViewData["Title"] = "Donations List";
+    ViewData["Title"] = "Monetary Donations";
 }
 
 <style>
     /* Custom styling for the color scheme */
     body {
-        background-color: purple;
-        color: white;
+        background-color: oldlace;
+        background: linear-gradient(to right, purple, darkpurple);
+        color: purple;
     }
 
     h2 {
+        font-family: fantasy;
         color: orange;
     }
 
@@ -25,13 +27,52 @@
 
     /* Style for "Back to Active Disasters" button */
     .btn-back {
-        background-color: orange;
+        background-color: purple;
         color: white;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .btn-back:hover {
+            background-color: darkorange;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+    /* Additional styling for the engaging message */
+    .engagement-message {
+        font-size: 18px;
+        font-family: fantasy;
+        margin-top: 20px;
+        color: purple;
+    }
+
+    /* Styling for the table */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    th, td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid orange;
+    }
+
+    th {
+        background-color: darkpurple;
+        color: purple;
+    }
+
+    tbody tr:hover {
+        background-color: darkpurple;
+        color: purple;
+        transition: background-color 0.3s ease;
     }
 </style>
 
 <h2>@ViewData["Title"]</h2>
 
+<!-- Engaging message for admins -->
 @if (Model.Donations != null && Model.Donations.Count > 0)
 {
     <table class="table">
@@ -41,7 +82,6 @@
                 <th>Donator</th>
                 <th>Disaster Allocated to</th>
                 <th>Donation Amount</th>
-                <th>Donation Type </th>
             </tr>
         </thead>
         <tbody>
@@ -51,13 +91,14 @@
                     <td>@donation.DonationID</td>
                     <td>@donation.UserID</td>
                     <td>@donation.DisasterID</td>
-                    <td>@donation.DonationAmount</td>
-                    <td>@donation.DonationItemID</td>
+                    <td>@string.Format("R{0:N2}", donation.DonationAmount)</td>
+
                 </tr>
             }
         </tbody>
     </table>
 }
+
 else
 {
     <p>No Donations yet</p>
