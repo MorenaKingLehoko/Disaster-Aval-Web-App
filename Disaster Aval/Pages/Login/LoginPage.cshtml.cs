@@ -55,7 +55,7 @@ namespace Disaster_Aval.Pages.Login
                     if (read.HasRows)
                     {
                         //if the query ran succesfully this page will be called
-                        return RedirectToPage("LoginSucces", loginViewModel);
+                        return RedirectToPage("/Donation/DonationHome", loginViewModel);
                     }
                     else
                     {
