@@ -6,41 +6,49 @@
 <style>
     /* Custom styling for the color scheme */
     body {
-        background-color: purple;
-        color: white;
+        background-color: oldlace;
+        background: linear-gradient(to right, purple, darkpurple);
+        color: purple;
     }
 
     h4 {
+        font-family: fantasy;
         color: orange;
     }
 
-    .form-group label {
+    dt {
         color: orange;
-    }
-
-    input[type="text"],
-    input[type="password"],
-    input[type="email"] {
-        background-color: purple;
-        color: white;
-        border: 1px solid orange;
-    }
-
-    .btn-primary {
-        background-color: orange;
-        border-color: orange;
     }
 
     a {
         color: orange;
     }
 
-    hr {
-        background-color: orange;
+    .form-group label {
+        font-family: fantasy;
+        color: purple;
     }
+
+    {
+        background-color: oldlace;
+        color: black;
+        border: 1px solid purple;
+    }
+
+    .btn-custom {
+        background-color: purple;
+        color: white;
+        border-color: purple;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .btn-custom:hover {
+            background-color: darkorange;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
 </style>
 
-<h4>Capture New Disaster</h4>
+<h4>Capture a new Disaster</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -72,7 +80,7 @@
                 <span asp-validation-for="AidRequired" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Capture Disaster" class="btn btn-primary" />
+                <input type="submit" value="Capture Disaster" class="btn btn-custom" />
             </div>
         </form>
     </div>
