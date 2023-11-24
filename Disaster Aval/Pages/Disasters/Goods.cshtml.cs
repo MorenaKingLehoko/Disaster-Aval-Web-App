@@ -25,7 +25,7 @@ namespace Disaster_Aval.Pages.Disasters
             {
                 connection.Open();
 
-                // Define your SQL query here to retrieve Goods Donations
+                // Defining my SQL query here to retrieve Goods Donations
                 string sqlQuery = "SELECT d.DonationID, u.Name AS Donator, dd.Name AS DisasterName, i.ItemName AS DonationItem " +
                                      "FROM DAF_Donations d " +
                                      "INNER JOIN DAF_Users u ON d.UserID = u.UserID " +

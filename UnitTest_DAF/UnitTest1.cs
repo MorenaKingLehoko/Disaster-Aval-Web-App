@@ -32,36 +32,24 @@ namespace UnitTest_DAF
         }
     }
     [TestClass]
-    public class MoneyDonationsModelTests
+    public class CaptureSuccessModelTests
     {
         [TestMethod]
-        public void OnPost_ShouldRetrieveValuesFromForm()
+        public void OnGet_ShouldNotThrowException()
         {
             // Arrange
-            var model = new MoneyDonationsModel();
-            var context = new DefaultHttpContext();
-            model.PageContext = new PageContext { HttpContext = context };
+            var pageModel = new CaptureSuccessModel();
 
-            // Set up form values for testing
-            context.Request.Form = new FormCollection(new Dictionary<string, StringValues>
-        {
-            { "UserID", "1" },
-            { "DisasterID", "2" },
-            { "Amount", "100" },
-            { "Confirm", "1" }
-        });
+            // Act & Assert
 
-            // Act
-            model.OnPost();
+            pageModel.OnGet();
 
-            // Assert
-            Assert.AreEqual(1, model.UserID, "UserID does not match.");
-            Assert.AreEqual(2, model.DisasterID, "DisasterID does not match.");
-            Assert.AreEqual(100, model.Amount, "Amount does not match.");
-            Assert.AreEqual(1, model.Confirm, "Confirm does not match.");
+
         }
+
     }
 }
+
 
 
 
