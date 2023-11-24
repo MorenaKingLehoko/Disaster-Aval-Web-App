@@ -102,7 +102,7 @@ namespace UnitTest_DAF
 
                 // Assert
                 Assert.IsNotNull(model.ActiveDisasterStats);
-                Assert.IsTrue(model.ActiveDisasterStats.Count > 0); 
+                Assert.IsTrue(model.ActiveDisasterStats.Count > 0);
             }
 
         }
@@ -110,8 +110,24 @@ namespace UnitTest_DAF
     [TestClass]
     public class DonationMessagetest
     {
+        [TestMethod]
+        public void StatsPageModel_DonationMessage_ShouldBeCorrect()
+        {
+            // Arrange
+            var model = new StatsPageModel();
+            model.TotalMonetaryDonations = 1000; 
+
+            // Act
+            // The OnGet method is typically called automatically during the page lifecycle
+
+            // Assert
+            Assert.AreEqual("Thank you for the generous donations!", model.DonationMessage);
+            // 
+        }
+
 
     }
+}
     
 
     
