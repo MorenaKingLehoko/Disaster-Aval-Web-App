@@ -7,6 +7,7 @@ using Xunit;
 using Disaster_Aval.Pages.Login;
 using Microsoft.Extensions.Primitives;
 using Disaster_Aval.Pages.Donation;
+using System.ComponentModel.DataAnnotations;
 
 namespace UnitTest_DAF
 {
@@ -47,6 +48,29 @@ namespace UnitTest_DAF
 
         }
 
+    }
+    
+        [TestClass]
+        public class initializedCorrectlyTest
+        {
+            [TestMethod]
+            public void AdminLoginModel_OnGet_ShouldInitializeProperties()
+            {
+                // Arrange
+                var model = new AdminLoginModel();
+
+                // Act
+                model.OnGet();
+
+                // Assert
+                Assert.AreEqual(0, model.AdminId);
+                Assert.IsNull(model.AdminPassword);
+                Assert.IsNull(model.AdminEmail);
+                Assert.IsNull(model.AdminName);
+                Assert.IsNull(model.AdminSurname);
+            }
+
+        }
     }
 }
 

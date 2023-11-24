@@ -33,9 +33,9 @@ namespace Disaster_Aval.Pages.Login
         public static string UserID;
 
 
-        //public void OnGet()
-        //{
-        //}
+        public void OnGet()
+        {
+        }
         public IActionResult OnPost()
         {
             AdminLoginModel loginViewModel = new AdminLoginModel(); // a new instance of LoginViewModel
