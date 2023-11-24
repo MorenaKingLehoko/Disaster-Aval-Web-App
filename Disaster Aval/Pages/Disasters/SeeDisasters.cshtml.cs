@@ -22,12 +22,11 @@ namespace Disaster_Aval.Pages.Disasters
         {
             if (string.IsNullOrEmpty(disasterId))
             {
-                // Handle invalid or missing disaster ID
-                // You may want to display a message or redirect to an error page
+                
                 return RedirectToPage("/Disasters/SeeDisasters");
             }
 
-            // Connect to the database using your connection string
+           
        
             string connectionString = "Server=tcp:djpromo123.database.windows.net,1433;Initial Catalog=DjPromoDatabase;Persist Security Info=False;User ID=Admin1;Password=Storedghast!68;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
 
@@ -36,12 +35,12 @@ namespace Disaster_Aval.Pages.Disasters
             {
                 connection.Open();
 
-                // Define your SQL query to delete the disaster by ID
+                // Defining my SQL query to delete the disaster by ID
                 string deleteQuery = "DELETE FROM DAF_Disasters WHERE DisasterID = @DisasterID";
 
                 using (SqlCommand command = new SqlCommand(deleteQuery, connection))
                 {
-                    // Add parameters to the SQL query
+                    // Adding parameters to the SQL query
                     command.Parameters.AddWithValue("@DisasterID", disasterId);
 
                     // Execute the SQL command
@@ -62,7 +61,7 @@ namespace Disaster_Aval.Pages.Disasters
             {
                 connection.Open();
 
-                // Defining your SQL query here to retrieve all disasters
+                // Defining my SQL query here to retrieve all disasters
                 string sqlQuery = "SELECT Name, Location,StartDate,EndDate FROM DAF_Disasters";
 
                 using (SqlCommand command = new SqlCommand(sqlQuery, connection))
