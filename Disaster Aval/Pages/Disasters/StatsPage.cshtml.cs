@@ -7,6 +7,7 @@ namespace Disaster_Aval.Pages.Disasters
     public class StatsPageModel : PageModel
     {
         public int TotalGoodsReceived { get; set; }
+        public string DonationMessage { get; set; }
         public decimal TotalMonetaryDonations { get; set; }
 
         public class DisasterStats
@@ -63,6 +64,7 @@ namespace Disaster_Aval.Pages.Disasters
                     {
                         // Handle the case where the result is null (no donations or an error occurred)
                         TotalMonetaryDonations = 0;
+                        DonationMessage = "No donations yet";
                     }
                 }
             }

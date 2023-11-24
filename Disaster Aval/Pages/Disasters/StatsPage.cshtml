@@ -73,14 +73,27 @@
 
         Welcome to the Disaster Alleviation Foundation's transparency hub. Here, you can view crucial information about our ongoing efforts:
         <br>
-       <strong> A. Total monetary donations received so far is: 
-
-           @Model.TotalMonetaryDonations.ToString("R 0")</strong>
+        <strong>A. Total monetary donations received so far is: </strong>
+        @if (Model.TotalMonetaryDonations > 0)
+        {
+            <span>@Model.TotalMonetaryDonations.ToString("R 0")</span>
+        }
+        else
+        {
+            <span>No monetary donations received yet</span>
+        }
 
         <br>
-     <strong> B. Total number of goods received so far is:
 
-         @Model.TotalGoodsReceived</strong>  
+        <strong>B. Total number of goods received so far is: </strong>
+        @if (Model.TotalGoodsReceived > 0)
+        {
+            <span>@Model.TotalGoodsReceived</span>
+        }
+        else
+        {
+            <span>No goods received yet</span>
+        }
 
         <br>
         <strong>C. Currently active disasters, with the money and goods allocated to the disaster.</strong>

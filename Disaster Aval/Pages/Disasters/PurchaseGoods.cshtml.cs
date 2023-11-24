@@ -132,10 +132,9 @@ namespace Disaster_Aval.Pages.Disasters
             }
         }
 
-        public object GetDonationAmountForDisaster(string connectionString, string disasterName)
-        {
-            throw new NotImplementedException();
-        }
+        
+
+       
     }
 }
 
