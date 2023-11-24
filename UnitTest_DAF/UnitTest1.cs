@@ -69,6 +69,7 @@ namespace UnitTest_DAF
             Assert.IsNull(model.AdminName);
             Assert.IsNull(model.AdminSurname);
         }
+        [TestClass]
         public class PopulatestheListTest
         {
             [TestMethod]
@@ -82,13 +83,39 @@ namespace UnitTest_DAF
 
                 // Assert
                 Assert.IsNotNull(model.Disasters);
-                Assert.IsTrue(model.Disasters.Count > 0); 
+                Assert.IsTrue(model.Disasters.Count > 0);
             }
+
+
+        }
+        [TestClass]
+        public class RetrievesAndPopulatestheListTest
+        {
+            [TestMethod]
+            public void StatsPageModel_OnGet_ShouldRetrieveStats()
+            {
+                // Arrange
+                var model = new StatsPageModel();
+
+                // Act
+                model.OnGet();
+
+                // Assert
+                Assert.IsNotNull(model.ActiveDisasterStats);
+                Assert.IsTrue(model.ActiveDisasterStats.Count > 0); 
+            }
+
         }
     }
-    
-}
+    [TestClass]
+    public class DonationMessagetest
+    {
 
+    }
+    
+
+    
+    
 
 
 
