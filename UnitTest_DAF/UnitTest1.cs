@@ -56,7 +56,7 @@ namespace UnitTest_DAF
 
             // Assert
             Assert.IsInstanceOfType(result, typeof(RedirectToPageResult));
-            Assert.AreEqual("YourExpectedPage", (result as RedirectToPageResult)?.PageName);  // Change "YourExpectedPage" to the expected page name
+            Assert.AreEqual("/Disasters/AdminHome", (result as RedirectToPageResult)?.PageName);  // Change "YourExpectedPage" to the expected page name
 
             // Add more assertions based on your specific requirements
             Assert.AreEqual("test@example.com", model.AdminEmail);

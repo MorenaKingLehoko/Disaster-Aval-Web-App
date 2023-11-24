@@ -35,18 +35,7 @@ namespace Disaster_Aval.Pages.Login
 
 
 
-        //public void OnGet()
-        //{
-        //    // You can use these properties in the OnGet method or elsewhere as needed
-        //    // Initialize with default values if necessary
-
-
-        //    ID = 0;
-        //    Name = "";
-        //    Surname = "";
-        //    Password = "";
-        //    Email = "";
-        //}
+        
         public IActionResult OnPost()
         {
             LoginViewModel loginViewModel = new LoginViewModel(); // a new instance of LoginViewModel
