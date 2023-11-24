@@ -7,43 +7,73 @@
 <style>
     /* Custom styling for the color scheme */
     body {
-        background-color: purple;
-        color: white;
+        background-color: oldlace;
+        background: linear-gradient(to right, purple, darkpurple);
+        color: purple;
     }
 
     h1 {
+        font-family:fantasy;
         color: orange;
     }
 
     a {
         color: orange;
+        transition: color 0.3s ease, text-decoration 0.3s ease;
     }
 
     /* Style for custom button */
     .btn-custom {
-        background-color: orange;
+        background-color: purple;
         color: white;
-        border-color: orange;
+        border-color: purple;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .btn-custom:hover {
+            background-color: darkorange;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+    .btn-special {
+        background-color: darkgoldenrod; /* Orange color */
+        color: #fff; /* White text */
+        border: 1px solid darkgoldenrod; /* Matching border color */
+        margin-top: 10px; /* Adjust as needed */
+    }
+
+        .btn-special:hover {
+            background-color: rebeccapurple; /* Darker shade on hover */
+            border: 1px solid rebeccapurple; /* Matching border color on hover */
+        }
+
+    /* Add an icon to buttons */
+    .btn i {
+        margin-right: 5px;
     }
 </style>
 
 <div class="text-center">
-    <h1 class="display-4">Welcome to the Disaster Alleviation Foundation</h1>
-    <p>A space created just for you, the compassionate individuals who make a difference in times of crisis. As a dedicated non-profit organization, we're here to extend a hand of hope and practical aid when it's needed most. Your contributions, whether in the form of essential goods, generous donations, or anonymous support, drive our mission forward. We understand the importance of transparency and accountability, which is why our web application offers you insights into our ongoing efforts.</p>
-    <p>Step into our platform to find exclusive areas tailored for you, where you can manage and edit data to maximize your impact. Join our community of like-minded individuals, where your generosity finds purpose and our commitment to transparency guides every step we take. Welcome to a space where technology and compassion unite to create real change.</p>
+    <h1 class="display-4"><strong>Empower People with the Disaster Alleviation Foundation</strong></h1>
+
+
+    <a asp-page="/Disasters/StatsPage" class="btn btn-special"><i class="fas fa-sign-in-alt"></i> Our Statistics</a>
+
+
+    <p> Spark Change, Ignite Hope: Dive into our mission of providing practical aid during disasters! Whether you're an individual, company, organization, or government, your support powers our impact.<strong>Donate goods like clothes and non-perishable foods, or give monetarily—it's your call!</strong> Plus, enjoy the option to stay incognito. Let's turn giving into a joyous journey of impact! 🌟 #EmpowerChange #TechForGood</p>
+    <p>Join our community of like-minded individuals, where your generosity finds purpose and our commitment to transparency guides every step we take. Welcome to a space where technology and compassion unite to create real change</p>
 </div>
 
 
 
 <div class="row text-center mt-3">
     <div class="col-md-12">
+        <a asp-page="/Login/LoginPage" class="btn btn-custom"><i class="fas fa-sign-in-alt"></i> Login</a>
+        <a asp-page="/Login/LoginView" class="btn btn-custom"><i class="fas fa-user-plus"></i> Sign up</a>
+        <a asp-page="/Login/AdminLogin" class="btn btn-custom"><i class="fas fa-user-shield"></i> Admin Portal</a>
 
-        <a asp-page="/Login/LoginPage" class="btn btn-custom">Login</a>
-
-        <a asp-page="/Login/LoginView" class="btn btn-custom">Sign up</a>
-
-        <a asp-page="/Login/AdminLogin" class="btn btn-custom">As Admin</a>
-
-      
+        <!-- Special Button with Description -->
+        
     </div>
 </div>
+

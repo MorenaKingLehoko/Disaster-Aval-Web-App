@@ -7,30 +7,41 @@
 <style>
     /* Custom styling for the color scheme */
     body {
-        background-color: purple;
-        color: white;
+        
+        background-color: oldlace;
+        background: linear-gradient(to right, purple, darkpurple);
+        color: purple;
     }
 
     h4 {
+        font-family:fantasy;
         color: orange;
     }
 
     .form-group label {
-        color: orange;
+        font-family: fantasy;
+        color: purple;
     }
 
     input[type="text"],
     input[type="password"],
     input[type="email"] {
-        background-color: purple;
-        color: white;
-        border: 1px solid orange;
+        background-color: oldlace;
+        color: black;
+        border: 1px solid purple;
     }
 
-    .btn-primary {
-        background-color: orange;
-        border-color: orange;
+   .btn-custom {
+        background-color: purple;
+        color: white;
+        border-color: purple;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
     }
+
+        .btn-custom:hover {
+            background-color: darkorange;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
 
     a {
         color: orange;
@@ -39,17 +50,28 @@
     hr {
         background-color: orange;
     }
+
+    /* Additional styling for engagement */
+    .engagement-message {
+        font-size: 18px;
+        font-family:fantasy;
+       
+        margin-top: 20px;
+        color: purple;
+    }
 </style>
 
-<h4>Login using your credentails</h4>
+<h4>Login to Empower Change!</h4>
 
 <hr />
+
+<!-- Engaging message -->
+<div class="engagement-message">join us in making a difference!</div>
+
 <div class="row">
     <div class="col-md-4">
         <form asp-page-handler="OnPost" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
-            
 
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
@@ -61,16 +83,16 @@
                 <input asp-for="Surname" class="form-control" />
                 <span asp-validation-for="Surname" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" class="form-control" />
-                <span asp-validation-for="Password" class="text-danger"></span>
+           <div class="form-group">
+                 <label asp-for="Password" class="control-label"></label>
+                 <input asp-for="Password" type="password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
             </div>
 
+
             <div class="form-group">
-                <input type="submit" value="Login" class="btn btn-primary" />
+                <input type="submit" value="Login" class="btn btn-custom" />
             </div>
         </form>
     </div>
 </div>
-

@@ -1,0 +1,141 @@
+﻿@page
+@model Disaster_Aval.Pages.Disasters.StatsPageModel
+@{
+}
+
+<style>
+    /* Custom styling for the color scheme */
+    body {
+        background-color: oldlace;
+        background: linear-gradient(to right, purple, darkpurple);
+        color: purple;
+    }
+
+    h4 {
+        font-family: fantasy;
+        color: orange;
+    }
+
+    dt {
+        color: orange;
+    }
+
+    a {
+        color: orange;
+    }
+
+    .btn-custom {
+        background-color: purple;
+        color: white;
+        border-color: purple;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .btn-custom:hover {
+            background-color: darkorange;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+    .engagement-message {
+        font-size: 18px;
+        font-family: 'Global Sans Serif';
+        margin-top: 20px;
+        color: purple;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    th, td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid orange;
+    }
+
+    th {
+        background-color: darkpurple;
+        color: purple;
+    }
+
+    tbody tr:hover {
+        background-color: darkpurple;
+        color: purple;
+        transition: background-color 0.3s ease;
+    }
+</style>
+
+<div class="text-center">
+    <h4>Explore The Disaster Alleviation Stats!</h4>
+
+    <div class="engagement-message">
+
+        Welcome to the Disaster Alleviation Foundation's transparency hub. Here, you can view crucial information about our ongoing efforts:
+        <br>
+        <strong>A. Total monetary donations received so far is: </strong>
+        @if (Model.TotalMonetaryDonations > 0)
+        {
+            <span>@Model.TotalMonetaryDonations.ToString("R 0")</span>
+        }
+        else
+        {
+            <span>'No monetary donations received yet'</span>
+        }
+
+        <br>
+
+        <strong>B. Total number of goods received so far is: </strong>
+        @if (Model.TotalGoodsReceived > 0)
+        {
+            <span>@Model.TotalGoodsReceived</span>
+        }
+        else
+        {
+            <span>'No goods received yet''</span>
+        }
+
+        <br>
+        <strong>C. Currently active disasters, with the money and goods allocated to the disaster.</strong>
+        <br>
+        @if (Model.ActiveDisasterStats != null && Model.ActiveDisasterStats.Any())
+        {
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Currently Active Disasters</th>
+                        <th>Location</th>
+                        <th>Total Money Donations</th>
+                        <th>Total Goods Donations</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var stats in Model.ActiveDisasterStats)
+                    {
+                        <tr>
+                            <td>@stats.DisasterName</td>
+                            <td>@stats.Location</td>
+                            <td>@stats.TotalMoneyDonations.ToString("R 0")</td>
+                            <td>@stats.TotalGoodsDonations</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <p>No active disasters with allocated funds and goods.</p>
+        }
+
+        Join us in our commitment to transparency and making a positive impact on those in need!
+    </div>
+</div>
+
+    <div class="row text-center mt-3">
+        <div class="col-md-12">
+        <a asp-page="/Login/LoginPage" class="btn btn-custom"><i class="fas fa-sign-in-alt"></i> Donate Now! </a>
+        <a asp-page="/Login/LoginView" class="btn btn-custom"><i class="fas fa-user-plus"></i> Join Us</a>
+            
+        </div>
+    </div>
+

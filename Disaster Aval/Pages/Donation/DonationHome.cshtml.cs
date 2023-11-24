@@ -20,11 +20,12 @@ namespace Disaster_Aval.Pages.Donation
             [DisplayName("Aids Needed")]
             public string AidsNeeded { get; set; }
         }
-
+      
         public List<Disaster> Disasters { get; set; }
 
         public void OnGet()
         {
+            
             Disasters = new List<Disaster>();
 
             string connectionString = "Server=tcp:djpromo123.database.windows.net,1433;Initial Catalog=DjPromoDatabase;Persist Security Info=False;User ID=Admin1;Password=Storedghast!68;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
@@ -35,8 +36,7 @@ namespace Disaster_Aval.Pages.Donation
                 conn.Open();
 
                 string query = "SELECT DisasterID, Name, Aids FROM DAF_Disasters";
-               // string query = "SELECT DisasterID, Name, Aids AS 'Aids Required' FROM DAF_Disasters";
-                //string query = "SELECT DisasterID, Name, Aids AS 'Aids Required' FROM DAF_Disasters";
+               
 
 
 

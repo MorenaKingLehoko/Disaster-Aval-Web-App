@@ -5,11 +5,13 @@
 <style>
     /* Custom styling for the color scheme */
     body {
-        background-color: purple;
-        color: white;
+        background-color: oldlace;
+        background: linear-gradient(to right, purple, darkpurple);
+        color: purple;
     }
 
     h4 {
+        font-family: fantasy;
         color: orange;
     }
 
@@ -22,17 +24,30 @@
     }
 
     .form-group label {
-        color: orange;
+        font-family: fantasy;
+        color: purple;
+    }
+
+    {
+        background-color: oldlace;
+        color: black;
+        border: 1px solid purple;
     }
 
     .btn-custom {
-        background-color: orange;
+        background-color: purple;
         color: white;
-        border-color: orange;
+        border-color: purple;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
     }
+
+        .btn-custom:hover {
+            background-color: darkorange;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
 </style>
 
-<h4>Allocate Goods to an Active Disaster</h4>
+<h4>Allocate Goods to The @ViewData["SelectedDisasterName"]</h4>
 <p>Your contribution can make a difference in times of crisis.</p>
 <hr />
 <div class="row">
@@ -40,18 +55,29 @@
         <form asp-action="SubmitDonation" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-            
+             <div class="form-group">
+                <label asp-for="DisasterID" class="control-label"></label>
+                <input asp-for="DisasterID" class="form-control" />
+                <span asp-validation-for="DisasterID" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="UserID" class="control-label"></label>
+                <input asp-for="UserID" class="form-control" />
+                <span asp-validation-for="UserID" class="text-danger"></span>
+            </div>
+
             <div class="form-group">
                 <label asp-for="NumberOfItems" class="control-label"></label>
                 <input asp-for="NumberOfItems" class="form-control" />
                 <span asp-validation-for="NumberOfItems" class="text-danger"></span>
             </div>
-           
+
             <div class="form-group">
                 <label asp-for="Desription" class="control-label"></label>
                 <input asp-for="Desription" class="form-control" />
                 <span asp-validation-for="Desription" class="text-danger"></span>
-                </div>
+            </div>
 
             <div class="form-group">
                 <label asp-for="Category" class="control-label"></label>
@@ -59,21 +85,10 @@
                 <span asp-validation-for="Category" class="text-danger"></span>
             </div>
 
-
-            <div class="form-group">
-                <label asp-for="DisasterID" class="control-label"></label>
-                <input asp-for="DisasterID" class="form-control" />
-                <span asp-validation-for="DisasterID" class="text-danger"></span>
+            <div class="text-center">
+                <button type="submit" class="btn btn-custom">Submit Donation</button>
+                <a asp-action="Index" class="btn btn-secondary">Back</a>
             </div>
-            <div class="form-group">
-                <label asp-for="UserID" class="control-label"></label>
-                <input asp-for="UserID" class="form-control" />
-                <span asp-validation-for="UserID" class="text-danger"></span>
-            </div>
-                <div class="text-center">
-                    <button type="submit" class="btn btn-custom">Submit Donation</button>
-                    <a asp-action="Index" class="btn btn-secondary">Back</a>
-                </div>
         </form>
     </div>
 </div>

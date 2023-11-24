@@ -35,18 +35,7 @@ namespace Disaster_Aval.Pages.Login
 
 
 
-        //public void OnGet()
-        //{
-        //    // You can use these properties in the OnGet method or elsewhere as needed
-        //    // Initialize with default values if necessary
-
-
-        //    ID = 0;
-        //    Name = "";
-        //    Surname = "";
-        //    Password = "";
-        //    Email = "";
-        //}
+        
         public IActionResult OnPost()
         {
             LoginViewModel loginViewModel = new LoginViewModel(); // a new instance of LoginViewModel
@@ -83,21 +72,6 @@ namespace Disaster_Aval.Pages.Login
                 }
            
 
-
-                ////Insert into <Table> what i get from the form
-                //if (loginViewModel.ID == 1 && loginViewModel.Name == "Morena" && loginViewModel.Surname == "Lehoko" && loginViewModel.Password == "1234")
-                //{
-
-
-
-                //    // Returning the LoginSuccess page if the login was successful and passing in the model to display the details
-                //    return RedirectToPage("LoginSucces", loginViewModel);
-                //}
-                //else
-                //{
-                //    // If the login was not successful, you might want to return an error view or redirect to a different page.
-                //    return RedirectToPage("LoginFailed", loginViewModel);
-                //}
             }catch(Exception ex)
             {
                 return RedirectToPage("LoginFailed", loginViewModel);

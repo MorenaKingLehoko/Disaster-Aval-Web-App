@@ -18,7 +18,7 @@ namespace Disaster_Aval.Pages.Disasters
             public int Id { get; set; }
             public string? Name { get; set; }
             public decimal AvailableMoney { get; set; }
-           // public string ItemName { get; set; }
+            // public string ItemName { get; set; }
 
 
 
@@ -35,6 +35,7 @@ namespace Disaster_Aval.Pages.Disasters
             decimal totalDonationAmount = GetDonationAmountForDisaster(disasterName);
 
             // Subtracting the user-entered amount from the totalDonationAmount
+            //100
             decimal newTotalDonationAmount = totalDonationAmount - amountSpent;
 
             // Updating the database with the new totalDonationAmount for the specified disaster
@@ -44,15 +45,15 @@ namespace Disaster_Aval.Pages.Disasters
             return RedirectToPage("AddItem");
         }
 
+        //this method returns the donation amount for the dissatster
         private decimal GetDonationAmountForDisaster(string disasterName)
         {
             string connectionString = "Server=tcp:djpromo123.database.windows.net,1433;Initial Catalog=DjPromoDatabase;Persist Security Info=False;User ID=Admin1;Password=Storedghast!68;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
 
 
             // Defining my SQL query to retrieve the donation amount for the specified disaster
-            string sqlQuery = "SELECT Don.DonationAmount FROM [dbo].[DAF_Disasters] D " +
-                             "LEFT JOIN [dbo].[DAF_Donations] Don ON D.DisasterID = Don.DisasterID " +
-                             "WHERE D.Name = @DisasterName";
+            string sqlQuery = "SELECT\r\n    max(Don.NewTotalDonationAmount) AS TotalNewDonationAmount\r\nFROM\r\n    [dbo].[DAF_Disasters] D\r\nLEFT JOIN\r\n    [dbo].[DAF_Donations] Don ON D.DisasterID = Don.DisasterID\r\nWHERE\r\n    D.Name = @DisasterName AND Don.NewTotalDonationAmount IS NOT NULL;";
+
 
             // Executing the query to get the specific donation amount
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -76,9 +77,9 @@ namespace Disaster_Aval.Pages.Disasters
             string connectionString = "Server=tcp:djpromo123.database.windows.net,1433;Initial Catalog=DjPromoDatabase;Persist Security Info=False;User ID=Admin1;Password=Storedghast!68;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
 
             // Defining my SQL query to update the total donation amount for the specified disaster
-            string sqlUpdateQuery = "UPDATE d\r\nSET d.DonationAmount = @NewTotalDonationAmount\r\nFROM [dbo].[DAF_Donations] d\r\nJOIN [dbo].[DAF_Disasters] dd ON d.DisasterID =" +
-                " dd.DisasterID" +
-                "\r\nWHERE dd.Name = @DisasterName;\r\n";
+            //with the new column NewTotalDonationAmount
+            string sqlUpdateQuery = "UPDATE d\r\nSET d.NewTotalDonationAmount = @NewTotalDonationAmount\r\nFROM [dbo].[DAF_Donations] d\r\nJOIN [dbo].[DAF_Disasters] dd ON d.DisasterID = dd.DisasterID\r\nWHERE dd.Name = @DisasterName AND d.DonationType = 'Monetary';\r\n";
+
 
             // Execut the query to update the total donation amount
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -104,7 +105,8 @@ namespace Disaster_Aval.Pages.Disasters
                 connection.Open();
                 //Z point
                 //  SQL query to retrieve disaster data
-                string sqlQuery = "SELECT\r\n    D.DisasterID,\r\n    D.Name AS DisasterName,\r\n    SUM(Don.DonationAmount) AS TotalDonationAmount\r\nFROM\r\n    [dbo].[DAF_Disasters] D\r\nLEFT JOIN\r\n    [dbo].[DAF_Donations] Don ON D.DisasterID = Don.DisasterID\r\nGROUP BY\r\n    D.DisasterID, D.Name\r\nHAVING\r\n    SUM(Don.DonationAmount) > 0\r\nORDER BY\r\n    D.Name;\r\n";
+                string sqlQuery = "SELECT\r\n    D.DisasterID,\r\n    D.Name AS DisasterName,\r\n    MAX(Don.NewTotalDonationAmount) AS TotalDonationAmount\r\nFROM\r\n    [dbo].[DAF_Disasters] D\r\nLEFT JOIN\r\n    [dbo].[DAF_Donations] Don ON D.DisasterID = Don.DisasterID\r\nWHERE\r\n    Don.NewTotalDonationAmount IS NOT NULL\r\nGROUP BY\r\n    D.DisasterID, D.Name\r\nORDER BY\r\n    D.Name;";
+
                 //   string sqlQuery = "SELECT\r\n    D.DisasterID,\r\n    D.Name AS DisasterName,\r\n    SUM(Don.DonationAmount) AS TotalDonationAmount\r\nFROM\r\n    [dbo].[DAF_Disasters] D\r\nLEFT JOIN\r\n    [dbo].[DAF_Donations] Don ON D.DisasterID = Don.DisasterID\r\nGROUP BY\r\n    D.DisasterID, D.Name\r\nHAVING\r\n    SUM(Don.DonationAmount) > 0\r\nORDER BY\r\n    D.Name;\r\n";
 
                 using (SqlCommand command = new SqlCommand(sqlQuery, connection))
@@ -120,7 +122,7 @@ namespace Disaster_Aval.Pages.Disasters
                                 Id = reader.GetInt32(0),
                                 Name = reader.GetString(1),
                                 AvailableMoney = reader.GetDecimal(2),
-                               // ItemName = reader.GetString(3),
+                                // ItemName = reader.GetString(3),
                             };
 
                             Disasters.Add(disaster);
@@ -129,5 +131,11 @@ namespace Disaster_Aval.Pages.Disasters
                 }
             }
         }
+
+        
+
+       
     }
 }
+
+       

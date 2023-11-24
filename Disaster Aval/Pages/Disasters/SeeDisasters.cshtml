@@ -1,17 +1,19 @@
 ﻿@page
 @model Disaster_Aval.Pages.Disasters.SeeDisastersModel
 @{
-    ViewData["Title"] = "See Disasters";
+    ViewData["Title"] = "All Active Disatsers";
 }
 
 <style>
     /* Custom styling for the color scheme */
     body {
-        background-color: purple;
-        color: white;
+        background-color: oldlace;
+        background: linear-gradient(to right, purple, darkpurple);
+        color: purple;
     }
 
     h2 {
+        font-family: fantasy;
         color: orange;
     }
 
@@ -25,8 +27,46 @@
 
     /* Style for "Back to Active Disasters" button */
     .btn-back {
-        background-color: orange;
+        background-color: purple;
         color: white;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .btn-back:hover {
+            background-color: darkorange;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+    /* Additional styling for the engaging message */
+    .engagement-message {
+        font-size: 18px;
+        font-family: fantasy;
+        margin-top: 20px;
+        color: purple;
+    }
+
+    /* Styling for the table */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    th, td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid orange;
+    }
+
+    th {
+        background-color: darkpurple;
+        color: purple;
+    }
+
+    tbody tr:hover {
+        background-color: darkpurple;
+        color: purple;
+        transition: background-color 0.3s ease;
     }
 </style>
 
@@ -44,24 +84,32 @@
                 <th>EndDate</th>
             </tr>
         </thead>
+        <!-- Updated table body section -->
         <tbody>
             @foreach (var disaster in Model.Disasters)
             {
                 <tr>
-                    
                     <td>@disaster.Name</td>
                     <td>@disaster.Location</td>
                     <td>@disaster.Startdate</td>
-
                     <td>@disaster.EndDate</td>
+
+                    <!-- delete button for each disaster -->
+                    <td>
+                        <form method="post" asp-page-handler="Delete" asp-route-disasterId="@disaster.DisasterID">
+                            <button type="submit" class="btn btn-back">Delete</button>
+                        </form>
+                    </td>
                 </tr>
             }
         </tbody>
+
     </table>
 }
 else
 {
     <p>No Disasters found</p>
 }
+
 
 <a asp-page="/Disasters/ActiveDisasters" class="btn btn-back">Back to Active Disasters</a>

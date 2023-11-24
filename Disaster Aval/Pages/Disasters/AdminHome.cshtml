@@ -1,15 +1,17 @@
 ﻿@page
 @model Disaster_Aval.Pages.Login.AdminLoginModel
 @{
- }
+}
 <style>
     /* Custom styling for the color scheme */
     body {
-        background-color: purple;
-        color: white;
+        background-color: oldlace;
+        background: linear-gradient(to right, purple, darkpurple);
+        color: purple;
     }
 
     h4 {
+        font-family: fantasy;
         color: orange;
     }
 
@@ -21,41 +23,44 @@
         color: orange;
     }
 
-    /* Style for "Start Donating" button */
-    .btn-start-donating {
-        background-color: orange;
+    .btn-custom {
+        background-color: purple;
         color: white;
+        border-color: purple;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .btn-custom:hover {
+            background-color: darkorange;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+    .engagement-message {
+        font-size: 18px;
+        font-family: fantasy;
+        margin-top: 20px;
+        color: purple;
     }
 </style>
 
 <div class="text-center">
-    <h4>Welcome Admin: @Model.AdminId</h4>
+    <h4>Admin Portal</h4>
 
-    @*add a message for the admins*@
-    <p></p
-
-
+   
+    <div class="engagement-message">Welcome, Change Maker! As an admin, you wield the magic wand of impact. Dive into the admin portal and orchestrate waves of positive change. Every click is a step toward a brighter tomorrow!</div>
 </div>
 
 <div class="row text-center">
     <div class="col-sm-6 offset-sm-3">
-
     </div>
 </div>
-
-
-
-@*change to ASP>net*@
-
-
-
 <div class="text-center">
-    @*<a asp-page="/Donation/DonationHome" class="btn btn-primary">Login</a>*@
-    <a asp-page="/Disasters/ActiveDisasters" class="btn btn-start-donating">Capture New Disaster</a>
-    <a asp-page="/Disasters/DonationsList" class="btn btn-start-donating">See Allocated Money</a>
-    <a asp-page="/Disasters/Goods" class="btn btn-start-donating">See Allocated Goods</a>
-    <a asp-page="/Disasters/SeeDisasters" class="btn btn-start-donating">See All Disasters</a>
-    <a asp-page="/Disasters/PurchaseGoods" class="btn btn-start-donating">Purchase Goods</a>
+    <a asp-page="/Disasters/ActiveDisasters" class="btn btn-custom">Capture New Disaster</a>
+    <a asp-page="/Disasters/DonationsList" class="btn btn-custom">See Allocated Money</a>
+    <a asp-page="/Disasters/Goods" class="btn btn-custom">See Allocated Goods</a>
+    <a asp-page="/Disasters/SeeDisasters" class="btn btn-custom">See All Disasters</a>
+    <a asp-page="/Disasters/PurchaseGoods" class="btn btn-custom">Purchase Goods</a>
 </div>
+
 
 
